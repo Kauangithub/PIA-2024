@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parque Municipal Rio Juqueriquerê</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="shortcut icon" type="image/jpg" href="img/logo.jpg">
+</head>
+
+<body>
+  <header>
+    <h1>Compre seus ingressos aqui</h1>
+  </header>
+
+  <button class="menu-button">Menu</button>
+  <div class="menu-container">
+    <div class="menu-item">Menu 1</div>
+    <div class="menu-item">Menu 2</div>
+    <div class="menu-item">Menu 3</div>
+    <div class="menu-sub">
+      <div class="menu-sub-item">Sub-menu 1</div>
+      <div class="menu-sub-item">Sub-menu 2</div>
+      <div class="menu-sub-item">Sub-menu 3</div>
+    </div>
+    <div class="menu-sub">
+      <div class="menu-sub-item">Sub-menu 4</div>
+      <div class="menu-sub-item">Sub-menu 5</div>
+      <div class="menu-sub-item">Sub-menu 6</div>
+    </div>
+  </div>
+  <main>
+    <section id="tickets">
+  <h2>Parque Estadual do Rio Juqueriquerê Tickets</h2>
+  <div id="ticket-options">
+  <div class="ticket-option">
+    <h3>Passeio Solo</h3>
+    <img src="img/rio1.jpg">
+    <p>Description of Option 1</p>
+    <button class="date-btn">Escolha a Data</button>
+    <div id="date-popup" class="popup">
+      <div class="popup-content">
+        <h2>Definir Dia</h2>
+        <input type="date" id="date-picker">
+        <button class="ok-btn">OK</button>
+        <button class="cancel-btn">Cancelar</button>
+      </div>
+    </div>
+    <button class="details-btn">Mais Detalhes</button>
+    <p>Preço: R$1,90</p>
+  </div>
+
+  <!-- Add more ticket options here -->
+  <div class="ticket-option">
+    <h3>Passeio Guiado</h3>
+    <img src="img/rio2.jpg">
+    <p>Descrição da opção 2</p>
+    <button class="date-btn">Escolha a Data</button>
+    <div id="date-popup2" class="popup">
+      <div class="popup-content">
+        <h2>Definir Dia</h2>
+        <input type="date" id="date-picker2">
+        <button class="ok-btn">OK</button>
+        <button class="cancel-btn">Cancelar</button>
+      </div>
+    </div>
+    <button class="details-btn">Mais Detalhes</button>
+    <p>Preço: R$60.000,01</p>
+  </div>
+
+  <div class="ticket-option">
+    <h3>Passeio Escolar</h3>
+    <img src="img/matheus.jpg">
+    <p>Descrição da opção 3</p>
+    <button class="date-btn">Escolha a Data</button>
+    <div id="date-popup3" class="popup">
+      <div class="popup-content">
+        <h2>Definir Dia</h2>
+        <input type="date" id="date-picker3">
+        <button class="ok-btn">OK</button>
+        <button class="cancel-btn">Cancelar</button>
+      </div>
+    </div>
+    <button class="details-btn">Mais Detalhes</button>
+    <p>Preço: R$00.01</p>
+  </div>
+
+  <script>
+    // Get thescript> date picker buttons and the date popups
+    const dateBtns = document.querySelectorAll('.date-btn');
+    const datePopups = document.querySelectorAll('.popup');
+
+    // Get the details buttons and the details popups
+    const detailsBtns = document.querySelectorAll('.details-btn');
+    const detailsPopups = [];
+
+    // Create the details popups
+    for (let i = 0; i < detailsBtns.length; i++) {
+      const detailsPopup = document.createElement('div');
+      detailsPopup.classList.add('popup');
+      detailsPopup.classList.add('details-popup');
+      detailsPopup.innerHTML = `
+        <div class="popup-content">
+          <h2>Mais detalhes</h2>
+          <p>Mais detalhes sobre a opção ${i + 1}</p>
+          <button class="ok-btn">OK</button>
+        </div>
+      `;
+      document.body.appendChild(detailsPopup);
+      detailsPopups.push(detailsPopup);
+    }
+
+    // Function to show the date popup
+    function showDatePopup(index) {
+      datePopups[index].style.display = 'block';
+    }
+
+    // Function to hide the date popup
+    function hideDatePopup(index) {
+      datePopups[index].style.display = 'none';
+    }
+
+    // Function to show the details popup
+    function showDetailsPopup(index) {
+      detailsPopups[index].style.display = 'block';
+    }
+
+    // Function to hide the details popup
+    function hideDetailsPopup(index) {
+      detailsPopups[index].style.display = 'none';
+    }
+
+    // Add event listeners to the date picker buttons and the details buttons
+    for (let i = 0; i < dateBtns.length; i++) {
+      dateBtns[i].addEventListener('click', () => showDatePopup(i));
+      detailsBtns[i].addEventListener('click', () => showDetailsPopup(i));
+    }
+
+    // Add event listeners to the OK and Cancel buttons in the date popups
+    for (let i = 0; i < datePopups.length; i++) {
+      const okBtn = datePopups[i].querySelector('.ok-btn');
+      const cancelBtn = datePopups[i].querySelector('.cancel-btn');
+      okBtn.addEventListener('click', () => hideDatePopup(i));
+      cancelBtn.addEventListener('click', () => hideDatePopup(i));
+    }
+
+    // Add event listeners to the OK buttons in the details popups
+    for (let i = 0; i < detailsPopups.length; i++) {
+      const okBtn = detailsPopups[i].querySelector('.ok-btn');
+      okBtn.addEventListener('click', () => hideDetailsPopup(i));
+    }
+  </script>
+  
+</section>
+        
+    </section>
+    <section id="info">
+      <section class="info1">
+        <h2>Sobre nós</h2>
+        <p>Nós somos um companhia destinada à preservação e manutenção do Parque Municipal do Rio Juqueriquerê.</p>
+      </section>
+
+      <section class="info2">
+        <h2>Nossos Serviços</h2>
+        <ul>
+          <li><a href="#">Observação de passáros</a></li>
+          <li><a href="#">Trilhas</li>
+          <li><a href="#">Passeios guiados</a></li>
+        </ul>
+      </section>
+
+      <section class="info3">
+        <h2>Contatos</h2>
+        <p>Contact us at [insert contact information].</p>
+      </section>
+    </section>
+      
+  </main>
+
+  <footer>
+    <p>&copy; 2024 SUS. All rights reserved.</p>
+  </footer>
+  <script src="scripts/script.js"></script>
+</body>
+</html>

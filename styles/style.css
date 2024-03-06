@@ -1,0 +1,346 @@
+:root {
+  --primary-color: #4CAF50;
+  --secondary-color: #333;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  /*line-height: 1.6;*/
+  color: var(--secondary-color);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  
+}
+
+header {
+  background-color: var(--primary-color);
+  text-align: center;
+  padding: 20px 0;
+  height: fit-content;
+}
+
+h1 {
+  color: #fff;
+}
+
+.menu-button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-container {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #333;
+  color: #fff;
+}
+
+.menu-item {
+  padding: 10px 20px;
+  border-bottom: 1px solid #444;
+}
+
+.menu-sub {
+  display: none;
+}
+
+.menu-button:focus + .menu-container,
+.menu-container:hover {
+  display: block;
+}
+
+.menu-item:hover + .menu-sub {
+  display: block;
+}
+
+main {
+  padding: 20px;
+}
+#tickets {
+  text-align: center;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+#tickets h2{
+  color:#4CAF50;
+}
+#ticket-options { 
+  max-width: 92.5%;
+  display: flex;
+  flex-direction:row;
+}
+.ticket-option {
+  border-radius: 25px;
+  flex-basis: calc(48% - 10px);
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  -webkit-margin-start: 7.5%;
+  
+}
+
+.ticket-option:hover {
+  transform: translateY(-5px);
+}
+
+.ticket-option h3 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.ticket-option img {
+  border-radius: 25px;
+  width: 80%;
+  height: 40%;
+  margin-bottom: 10px;
+  
+}
+
+.ticket-option p {
+  margin-bottom: 10px;
+}
+
+.date-btn{
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+.details-btn {
+  background-color: var(--primary-color);
+  background-color:#007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.date-btn:hover{
+  background-color: #3e8e41;
+}
+.details-btn:hover {
+  background-color: #0356af;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 300px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ok-btn,
+.cancel-btn {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.ok-btn:hover,
+.cancel-btn:hover {
+  background-color: #3e8e41;
+}
+#info {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+#info p{
+  font-size: 16px;
+}
+#info section {
+  flex-basis: calc(33.33% - 10px);
+  background-color: #fff;
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+#info section:hover {
+  transform: translateY(-5px);
+}
+
+#info section h2 {
+  color: var(--primary-color);
+}
+
+#info .info1 {
+  margin-right: 10px;
+}
+
+#info .info2 {
+  margin-left: 0px;
+}
+
+#info .info2 ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#info .info2 li {
+  margin-bottom: 5px;
+}
+
+#info .info2 a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+#info .info2 a:hover {
+  text-decoration: underline;
+}
+/* Styles for screens smaller than 960px (e.g. mobile devices) */
+@media screen and (max-width: 959px) {
+  .container {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+/* Styles for screens smaller than 600px (e.g. mobile devices in portrait orientation) */
+@media screen and (max-width: 599px) {
+  
+  body, header {
+    max-width:100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+  .header {
+    padding: 0px;
+    max-width: 100%;
+    min-width: 100%;
+    font-size: 1.5em;
+  }
+
+  .content {
+    font-size: 0.9em;
+  }
+  .main {
+    max-width: 100%;
+    width: 100%;
+    max-height: fit-content;
+    display: flex;
+  }
+  #tickets {
+    width:100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+    align-content: center;
+    
+  }
+  #tickets h2{
+    background-position: auto;
+    font-size: auto;
+    text-align: top;
+    padding: 20px;
+    margin-bottom: 100px;
+  }
+  #ticket-options {
+    margin:0;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+  }
+  #ticket-options button {
+    margin-bottom: 10px;
+  }
+  .ticket-option {
+    border-radius: 25px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    min-width: 80%;
+  }
+  /*retirar os negativos dos margins e arrumar com o display flex*/
+  #info {
+    display:flex;
+    flex-direction:column;
+    border: 0;
+  }
+  #info h2{
+    margin-bottom: -5%;
+  }
+  .info1{
+    margin-bottom:-5%
+  }
+  .info2{
+    display: flex;
+    flex-direction: column;
+    margin-right: 47.3%;
+    margin-bottom:-8%
+
+  }
+  .info3{
+    display: flex;
+    flex-direction: column;
+    margin-right: 47.3%
+  }
+  #info p {
+    font-size: 0.9em;
+  }
+}
+/*retirar os negativos dos margins e arrumar com o display flex*/
