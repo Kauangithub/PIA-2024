@@ -23,45 +23,8 @@ header {
 h1 {
   color: #fff;
 }
-
-.menu-button {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-.menu-container {
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  width: 200px;
-  height: 100%;
-  background-color: #333;
-  color: #fff;
-}
-
-.menu-item {
-  padding: 10px 20px;
-  border-bottom: 1px solid #444;
-}
-
-.menu-sub {
-  display: none;
-}
-
-.menu-button:focus + .menu-container,
-.menu-container:hover {
-  display: block;
-}
-
-.menu-item:hover + .menu-sub {
-  display: block;
-}
-
 main {
+  max-width:100%;
   padding: 20px;
 }
 #tickets {
@@ -73,7 +36,6 @@ main {
   color:#4CAF50;
 }
 #ticket-options { 
-  max-width: 92.5%;
   display: flex;
   flex-direction:row;
 }
@@ -87,8 +49,6 @@ main {
   margin-bottom: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
-  -webkit-margin-start: 7.5%;
-  
 }
 
 .ticket-option:hover {
@@ -275,7 +235,6 @@ footer {
     display: flex;
   }
   #tickets {
-    width:100%;
     max-width: 100%;
     display: flex;
     flex-direction: column;
