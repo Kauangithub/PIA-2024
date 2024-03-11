@@ -38,10 +38,11 @@ main {
 #ticket-options { 
   display: flex;
   flex-direction:row;
+  justify-content: space-between;
 }
 .ticket-option {
   border-radius: 25px;
-  flex-basis: calc(48% - 10px);
+  width:25%;
   margin-bottom: 20px;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -153,6 +154,7 @@ footer {
 #info {
   align-items: center;
   display: flex;
+  flex-direction:row;
   justify-content: space-between;
 }
 
@@ -160,24 +162,19 @@ footer {
   font-size: 16px;
 }
 #info section {
-  flex-basis: calc(33.33% - 10px);
+  width:33%;
   background-color: #fff;
   padding: 20px;
   transition: transform 0.3s ease-in-out;
 }
 
 #info section:hover {
-  transform: translateY(-5px);
+  transform: translateY(-1px);
 }
 
 #info section h2 {
   color: var(--primary-color);
 }
-
-#info .info1 {
-  margin-right: 10px;
-}
-
 #info .info2 {
   margin-left: 0px;
 }
@@ -186,11 +183,6 @@ footer {
   list-style-type: none;
   padding: 0;
 }
-
-#info .info2 li {
-  margin-bottom: 5px;
-}
-
 #info .info2 a {
   color: #007bff;
   text-decoration: none;
@@ -209,7 +201,6 @@ footer {
 
 /* Styles for screens smaller than 600px (e.g. mobile devices in portrait orientation) */
 @media screen and (max-width: 599px) {
-  
   body, header {
     max-width:100%;
     display: flex;
@@ -277,26 +268,11 @@ footer {
   /*retirar os negativos dos margins e arrumar com o display flex*/
   #info {
     display:flex;
-    flex-direction:column;
+    flex-direction: column;
     border: 0;
   }
-  #info h2{
-    margin-bottom: -5%;
-  }
-  .info1{
-    margin-bottom:-5%
-  }
-  .info2{
-    display: flex;
-    flex-direction: column;
-    margin-right: 47.3%;
-    margin-bottom:-8%
-
-  }
-  .info3{
-    display: flex;
-    flex-direction: column;
-    margin-right: 47.3%
+  #info section{
+    width:100%;
   }
   #info p {
     font-size: 0.9em;
