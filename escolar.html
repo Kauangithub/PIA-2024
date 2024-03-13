@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passeio Escolar - Parque Municipal Rio Juqueriquerê</title>
+  <link rel="stylesheet" href="styles/escolar.css">
+</head>
+
+<body>
+  <header>
+    <h1>Compre seu ingresso para o Passeio Escolar</h1>
+  </header>
+
+  <main>
+    <div class="linha1">
+    <!-- Ticket selection section -->
+    <section id="ticket-selection">
+      <div class="ticket-option">
+        <h3>Passeio Escolar</h3>
+        <img src="img/matheus.jpg" alt="Passeio Escolar Image">
+        <p>Descrição da opção 3</p>
+        <button class="select-btn">Selecionar</button>
+      </div>
+    </section>
+
+    <!-- User information form -->
+    <section id="user-info">
+      <h2>Informações do Comprador</h2>
+      <form id="purchase-form">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="quantity">Quantidade:</label>
+        <input type="number" id="quantity" name="quantity" min="1" required>
+
+        <label for="date">Data:</label>
+        <input type="date" id="date" name="date" required>
+
+        <button type="submit">Comprar</button>
+      </form>
+    </section>
+    </div>
+    <!-- Confirmation section -->
+    <section id="confirmation">
+      <h2>Confirmação da Compra</h2>
+      <p id="confirmation-message"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 SUS. All rights reserved.</p>
+  </footer>
+  <script src="scripts/script.js"></script>
+</body>
+
+</html>

@@ -18,6 +18,13 @@ header {
   text-align: center;
   padding: 20px 0;
   height: fit-content;
+  
+
+}
+header img{
+  height:5%;
+  width:5%;
+
 }
 
 h1 {
@@ -50,8 +57,11 @@ main {
   margin-bottom: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
+  
 }
-
+  .ticket-option a {
+   text-decoration: none;
+  }
 .ticket-option:hover {
   transform: translateY(-5px);
 }
@@ -96,7 +106,9 @@ main {
   border-radius: 5px;
   transition: background-color 0.3s ease-in-out;
 }
-
+.details-btn a{
+  color:#fff;
+}
 .date-btn:hover{
   background-color: #3e8e41;
 }
