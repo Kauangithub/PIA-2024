@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/cadastro.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Gerenciar Ingressos</h1>
+        <div class="ingressos existentes">
+            
+        </div>
+        <form id="ticketForm">
+            <div class="form-group">
+                <label for="ticketName">Nome do Ingresso:</label>
+                <input type="text" id="ticketName" name="ticketName" required>
+            </div>
+            <div class="form-group">
+                <label for="ticketDescription">Descrição:</label>
+                <textarea id="ticketDescription" name="ticketDescription" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="ticketPrice">Preço:</label>
+                <input type="number" id="ticketPrice" name="ticketPrice" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="ticketImage">Imagem:</label>
+                <input type="file" id="ticketImage" name="ticketImage" accept="image/*" required>
+            </div>
+            <button type="submit">Adicionar Ingresso</button>
+        </form>
+    </div>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
