@@ -14,6 +14,7 @@
         </div>
         <a href="index.html"><img src="https://cdn-icons-png.flaticon.com/512/1/1112.png"></a>
         <form id="ticketForm">
+            <span id="span">
             <div class="form-group">
                 <label for="ticketName">Nome do Ingresso:</label>
                 <input type="text" id="ticketName" name="ticketName" required>
@@ -30,7 +31,12 @@
                 <label for="ticketImage">Imagem:</label>
                 <input type="file" id="ticketImage" name="ticketImage" accept="image/*" required>
             </div>
-            <button type="submit">Adicionar Ingresso</button>
+            </span>
+            <div class="botoes">
+            <button  class="add" type="submit" onclick="addingresso()">Adicionar Ingresso</button>
+            <button class="rem" type="submit">Remover Ingresso</button>
+            </div>
+            
         </form>
     </div>
     <script src="scripts/script.js"></script>

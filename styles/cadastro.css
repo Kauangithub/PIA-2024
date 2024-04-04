@@ -16,9 +16,8 @@ body {
 }
 .container img {
   position:absolute;
-  top:5%;
-  height:10%;
-  width:3%;
+  max-height:60px;  
+  top:30px;
   border: 1px black;
 }
 h1 {
@@ -45,13 +44,29 @@ input[type="file"] {
   border-radius: 5px;
 }
 
-button {
+.botoes {
+  display: flex;
+  flex-direction: row;
+  gap:10px;
+}
+
+.add{
   background-color: #007bff;
   color: #fff;
   border: none;
   cursor: pointer;
 }
+.rem{
+  background-color: #fa4545;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
 
-button:hover {
+.add:hover {
   background-color: #0056b3;
+}
+.rem:hover{
+  background-color: #be2828;
+
 }
