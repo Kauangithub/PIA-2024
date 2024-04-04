@@ -6,6 +6,7 @@ body {
 }
 
 .container {
+  position: relative;
   width: 80%;
   margin: 50px auto;
   background-color: #fff;
@@ -13,7 +14,13 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
+.container img {
+  position:absolute;
+  top:5%;
+  height:10%;
+  width:3%;
+  border: 1px black;
+}
 h1 {
   text-align: center;
 }
