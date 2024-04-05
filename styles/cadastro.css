@@ -24,6 +24,13 @@ h1 {
   text-align: center;
 }
 
+#span {
+  display:none;
+  
+  padding:10px;
+  width:45%;
+  border-radius:25px;
+}
 .form-group {
   margin-bottom: 20px;
 }
@@ -49,24 +56,33 @@ input[type="file"] {
   flex-direction: row;
   gap:10px;
 }
+#canc {
+  background-color: #fa4545;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+#canc:hover {
+  background-color: #be2828;
 
-.add{
+}
+#add{
   background-color: #007bff;
   color: #fff;
   border: none;
   cursor: pointer;
 }
-.rem{
+#rem{
   background-color: #fa4545;
   color: #fff;
   border: none;
   cursor: pointer;
 }
 
-.add:hover {
+#add:hover {
   background-color: #0056b3;
 }
-.rem:hover{
+#rem:hover{
   background-color: #be2828;
 
 }

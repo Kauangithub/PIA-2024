@@ -9,11 +9,13 @@
 <body>
     <div class="container">
         <h1>Gerenciar Ingressos</h1>
-        <div class="ingressos existentes">
-            
+        <div id="ingexistentes">
+            <ul id="listaIng">
+                <li></li>
+            </ul>
         </div>
         <a href="index.html"><img src="https://cdn-icons-png.flaticon.com/512/1/1112.png"></a>
-        <form id="ticketForm">
+        <form id="ticketForm" method="post">
             <span id="span">
             <div class="form-group">
                 <label for="ticketName">Nome do Ingresso:</label>
@@ -31,10 +33,12 @@
                 <label for="ticketImage">Imagem:</label>
                 <input type="file" id="ticketImage" name="ticketImage" accept="image/*" required>
             </div>
+            <button id="canc" type="submit" onclick="canc()">Cancelar</button>
             </span>
             <div class="botoes">
-            <button  class="add" type="submit" onclick="addingresso()">Adicionar Ingresso</button>
-            <button class="rem" type="submit">Remover Ingresso</button>
+            <button id="add" type="submit" onclick="addIng()">Adicionar Ingresso</button>
+            
+            <button id="rem" type="submit" onclick="remIng()">Remover Ingresso</button>
             </div>
             
         </form>
