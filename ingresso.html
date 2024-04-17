@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ingressos</title>
+
+    <style>
+    body{
+        background: linear-gradient(#d9d9d900, #d9d9d900, #008A66);
+        background-repeat: no-repeat;
+        height: auto;
+    }
+    #inicio{
+        align-content: center;
+        padding-left: 40%;
+        width: auto;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #inicio p{
+       color: green;
+       font-size: 250%;
+       align-items: center;
+       text-align: center;
+       display: flex;
+    }
+    #michelangelo{
+        background-color: #008A66;
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: left;
+
+
+    }
+    #michelangelo *{
+        color: white;
+    }
+    #michelangelo p{
+        width: 100%;
+        font-size: 105%;
+    }
+    #kevin-hart{
+        display: flex;
+        justify-content: right;
+    }
+
+    #kevin-hart img{
+        width: 500px;
+        height: auto;
+        position: relative;
+    }
+
+    form {
+        width: 20%;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #008A66;
+        color: white;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .quantity {
+        margin-bottom: 10px;
+    }
+
+    .quantity input[type="number"] {
+        width: 50%; /* Reduzi a largura do input */
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-right: 5px; /* Espaçamento entre o input e os botões */
+    }
+
+    .quantity button {
+        width: 30px;
+        height: 30px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        font-size: 18px;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right; /* Alinhar os botões à direita */
+    }
+
+    #decrease {
+        margin-right: 40px; /* Adiciona margem direita ao botão de diminuir */
+    }
+
+    #increase {
+        margin-left: 40px; /* Adiciona margem esquerda ao botão de aumentar */
+    }
+
+
+    .quantity button:hover {
+        background-color: #0056b3;
+    }
+
+
+    button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    .calendar {
+        width: 300px;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .month {
+        text-align: center;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .month-text {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .weekdays {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .weekday {
+        width: calc(100% / 7);
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .days {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .day {
+        width: calc(100% / 7);
+        text-align: center;
+        padding: 5px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+    }
+
+    .day.selected {
+        background-color: lightblue;
+    }
+
+    .navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .nav-button {
+        cursor: pointer;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+    <div id="inicio">
+        <p>Ingressos dos passeios escolares</p>
+    </div>
+
+    <div id="michelangelo">
+        <p>Frase de exemplo pra descrição- Explore a natureza em sua forma mais vibrante! Traga sua turma escolar para uma jornada emocionante de aprendizado e diversão em nosso parque de conservação. Reserve seus ingressos agora e desperte o espírito da aventura!</p>
+        <br>
+        <p>alguma informação importante</p>
+        <br>
+        <p>campo aberto para informações ou cuidados ao ir para o parque....</p>
+        <br>
+        <p>Para mais informações, entre em contato com email@gmail.com</p>
+
+        <div id="kevin-hart">
+          <img src="https://i.pinimg.com/736x/0f/24/7b/0f247b51e209b2812761ff50f17534fe.jpg">
+        </div>
+    </div>
+
+    <div id="ingresso">
+        <h2>Garanta já o seu ingresso!</h2>
+    </div>
+
+        <div id="formulario">
+        <form>
+            <label for="name">Nome do professor/ responsável pelos alunos:</label>
+            <input type="text" id="name" name="name" required placeholder="Digite aqui">
+        
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required placeholder="Digite aqui">
+        
+            <label for="quantity">Quantidade de Ingressos:</label>
+            <div class="quantity">
+                <input type="number" id="quantity" name="quantity" value="1" min="1">
+                <button type="button" id="decrease">-</button>
+                <button type="button" id="increase">+</button>
+            </div>
+            <BR>
+            <label for="email">Data:</label>
+
+            <div class="calendar">
+                <div class="navigation">
+                    <div class="nav-button" id="prev-month">&lt;</div>
+                    <div class="month">
+                        <div class="nav-button" id="prev-year">&lt;&lt;</div>
+                        <div class="month-text" id="current-month">Abril 2024</div>
+                        <div class="nav-button" id="next-year">&gt;&gt;</div>
+                    </div>
+                    <div class="nav-button" id="next-month">&gt;</div>
+                </div>
+                <div class="weekdays">
+                    <div class="weekday">dom.</div>
+                    <div class="weekday">seg.</div>
+                    <div class="weekday">ter.</div>
+                    <div class="weekday">qua.</div>
+                    <div class="weekday">qui.</div>
+                    <div class="weekday">sex.</div>
+                    <div class="weekday">sáb.</div>
+                </div>
+                <div class="days" id="days"></div>
+
+                <p>Temporada 2024</p>
+                <p>Fechado / aguardando tarifa</p>
+            </div>
+
+            <label for="value">valor total: 100,00</label>
+         <input type="text" id="value" name="value" value="0" readonly>
+
+        </form>
+        
+    </div>
+       
+    <script>
+        const decreaseButton = document.getElementById('decrease');
+        const increaseButton = document.getElementById('increase');
+        const quantityInput = document.getElementById('quantity');
+        const displayValue = document.getElementById("display-value");
+        const valueInput = document.getElementById("value");
+
+
+
+        let value = 0;
+
+increaseButton.addEventListener("click", () => {
+    const quantity = parseInt(quantityInput.value);
+    if (quantity > 0) {
+        value += 100;
+        valueInput.value = value;
+    }
+});
+
+decreaseButton.addEventListener("click", () => {
+    if (value > 0) {
+        value -= 100;
+        valueInput.value = value;
+    }
+});
+    
+        decreaseButton.addEventListener('click', function() {
+            if (parseInt(quantityInput.value) > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+            }
+        });
+    
+        increaseButton.addEventListener('click', function() {
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        });
+
+        const monthNames = ["JAN. DE", "FEV. DE", "MAR. DE", "ABR. DE", "MAI. DE", "JUN. DE",
+    "JUL. DE", "AGO. DE", "SET. DE", "OUT. DE", "NOV. DE", "DEZ. DE"];
+    
+    const currentDate = new Date();
+    let currentMonth = currentDate.getMonth();
+    let currentYear = currentDate.getFullYear();
+
+    function renderCalendar() {
+        const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+        const lastDayOfMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        const daysContainer = document.getElementById("days");
+        daysContainer.innerHTML = "";
+
+        // Adicionar dias anteriores, se necessário, para preencher a primeira semana
+        for (let i = 0; i < firstDayOfMonth; i++) {
+            const dayElement = document.createElement("div");
+            dayElement.classList.add("day");
+            daysContainer.appendChild(dayElement);
+        }
+
+        // Adicionar os dias do mês
+        for (let i = 1; i <= lastDayOfMonth; i++) {
+            const dayElement = document.createElement("div");
+            dayElement.classList.add("day");
+            dayElement.textContent = i;
+            dayElement.addEventListener("click", () => {
+                dayElement.classList.toggle("selected");
+            });
+            daysContainer.appendChild(dayElement);
+        }
+    }
+
+    function updateMonthText() {
+        const monthText = `${monthNames[currentMonth]} ${currentYear}`;
+        document.getElementById("current-month").textContent = monthText;
+    }
+
+    function goToPreviousMonth() {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        renderCalendar();
+        updateMonthText();
+    }
+
+    function goToNextMonth() {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        renderCalendar();
+        updateMonthText();
+    }
+    
+    function goToPreviousYear() {
+        currentYear--;
+        renderCalendar();
+        updateMonthText();
+    }
+
+    function goToNextYear() {
+        currentYear++;
+        renderCalendar();
+        updateMonthText();
+    }
+
+    document.getElementById("prev-month").addEventListener("click", goToPreviousMonth);
+    document.getElementById("next-month").addEventListener("click", goToNextMonth);
+    document.getElementById("prev-year").addEventListener("click", goToPreviousYear);
+    document.getElementById("next-year").addEventListener("click", goToNextYear);
+
+    renderCalendar();
+    updateMonthText();
+    </script>
+</body>
+</html>
