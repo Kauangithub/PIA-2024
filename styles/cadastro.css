@@ -1,0 +1,88 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  position: relative;
+  width: 80%;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.container img {
+  position:absolute;
+  max-height:60px;  
+  top:30px;
+  border: 1px black;
+}
+h1 {
+  text-align: center;
+}
+
+#span {
+  display:none;
+  
+  padding:10px;
+  width:45%;
+  border-radius:25px;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+button,
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.botoes {
+  display: flex;
+  flex-direction: row;
+  gap:10px;
+}
+#canc {
+  background-color: #fa4545;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+#canc:hover {
+  background-color: #be2828;
+
+}
+#add{
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+#rem{
+  background-color: #fa4545;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#add:hover {
+  background-color: #0056b3;
+}
+#rem:hover{
+  background-color: #be2828;
+
+}
