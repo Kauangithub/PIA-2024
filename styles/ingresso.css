@@ -195,3 +195,7 @@ button[type="submit"]:hover {
     height: 90%;
     border-radius: 5%;
 }
+
+#valor input[type="text"]::placeholder {
+    color: #008A66; /* Altere a cor do placeholder aqui */
+}
