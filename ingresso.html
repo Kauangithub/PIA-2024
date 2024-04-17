@@ -60,8 +60,8 @@
         border: 1px solid #ccc;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        background-color: #008A66;
-        color: white;
+        background-color: #ffffff;
+        color: black;
     }
 
     label {
@@ -75,8 +75,9 @@
         width: 100%;
         padding: 8px;
         margin-bottom: 10px;
-        border: 1px solid #ccc;
+        border: 1px solid #D0D0D0;
         border-radius: 4px;
+        background-color: #F0F0F0;
     }
 
     .quantity {
@@ -95,8 +96,8 @@
         width: 30px;
         height: 30px;
         border: none;
-        background-color: #007bff;
-        color: white;
+        background-color: #008A66;
+        color: #CBFFF1;
         font-size: 18px;
         border-radius: 4px;
         cursor: pointer;
@@ -113,22 +114,22 @@
 
 
     .quantity button:hover {
-        background-color: #0056b3;
+        background-color: rgb(130, 236, 136);
     }
 
 
     button[type="submit"] {
         width: 100%;
         padding: 10px;
-        background-color: #007bff;
-        color: white;
+        background-color: #CBFFF1;
+        color: #008A66;
         border: none;
         border-radius: 4px;
         cursor: pointer;
     }
 
     button[type="submit"]:hover {
-        background-color: #0056b3;
+        background-color: rgb(130, 236, 136);
     }
 
     .calendar {
@@ -137,6 +138,8 @@
         border: 1px solid #ccc;
         border-radius: 5px;
         padding: 10px;
+        background-color: #008A66;
+        color: #ffffff;
     }
 
     .month {
@@ -174,10 +177,12 @@
         padding: 5px;
         border: 1px solid #ccc;
         cursor: pointer;
+        background-color: #CBFFF1;
+        color: #008A66;
     }
 
     .day.selected {
-        background-color: lightblue;
+        background-color: rgb(130, 236, 136);
     }
 
     .navigation {
@@ -189,6 +194,14 @@
     .nav-button {
         cursor: pointer;
         font-weight: bold;
+    }
+
+    .temporada p{
+        background-color: #CBFFF1;
+        color: #008A66;
+        width: 40%;
+        height: 90%;
+        border-radius: 5%;
     }
 </style>
 </head>
@@ -254,13 +267,15 @@
                 </div>
                 <div class="days" id="days"></div>
 
-                <p>Temporada 2024</p>
+                <div class="temporada"><p>Temporada 2024</p></div>
                 <p>Fechado / aguardando tarifa</p>
             </div>
+            <div id="valor">
+            <label for="value">Valor: R$ <span id="display-value">0</span>.00</label>
+            <input type="text" id="name" name="name" required placeholder="Cupom/ Voucher:">
+            <button type="submit">Continuar</button>
 
-            <label for="value">valor total: 100,00</label>
-         <input type="text" id="value" name="value" value="0" readonly>
-
+        </div>
         </form>
         
     </div>
@@ -280,14 +295,14 @@ increaseButton.addEventListener("click", () => {
     const quantity = parseInt(quantityInput.value);
     if (quantity > 0) {
         value += 100;
-        valueInput.value = value;
+        displayValue.textContent = value;
     }
 });
 
 decreaseButton.addEventListener("click", () => {
     if (value > 0) {
         value -= 100;
-        valueInput.value = value;
+        displayValue.textContent = value;
     }
 });
     
