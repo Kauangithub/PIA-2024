@@ -13,14 +13,22 @@ btnAdd.addEventListener('click', function(){
         btnAdd.style.width = '45%'
         btnAdd.style.margin =  '10px'
     } else if(forms.style.display != 'none') {
-        alert('Ingresso Criado');
+        alert('teste')
         const novoItem = document.createElement('li');
         novoItem.textContent = nome.value; 
         lista.appendChild(novoItem); 
+        forms.style.display = 'none'
+        btnRem.style.display = 'block'
+        btnAdd.style.width = '100%'
+        btnAdd.style.margin =  '0px'
     }  
 })
 
-
+btnRem.addEventListener('click', function(){
+    if(listaIng.value != ''){
+        alert('lista vazia')
+    }
+})
 function remIng(){
     existe.style.display = 'block'
 }
