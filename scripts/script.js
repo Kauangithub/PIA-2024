@@ -5,18 +5,22 @@ const existe = document.getElementById('ingexistentes')
 const lista = document.getElementById('listaIng')
 const nome = document.getElementById('ticketName')
 
-function addIng(){
-    if (forms.style.display = 'none'){
+
+btnAdd.addEventListener('click', function(){
+    if (forms.style.display != 'block'){
         forms.style.display = 'block'
         btnRem.style.display = 'none'
         btnAdd.style.width = '45%'
         btnAdd.style.margin =  '10px'
-    } else {
-        alert('Ingresso Criado')
-        lista.document.createElement('li')
-        lista.append('nome')
+    } else if(forms.style.display != 'none') {
+        alert('Ingresso Criado');
+        const novoItem = document.createElement('li');
+        novoItem.textContent = nome.value; 
+        lista.appendChild(novoItem); 
     }  
-}
+})
+
+
 function remIng(){
     existe.style.display = 'block'
 }
