@@ -16,8 +16,7 @@ body {
 }
 .container img {
   position:absolute;
-  min-height:10%;
-  max-height:40%;  
+  height: 3vw;  
   top:30px;
   border: 1px black;
 }
