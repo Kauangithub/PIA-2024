@@ -2,7 +2,7 @@ const btnAdd = document.getElementById('add')
 const btnRem = document.getElementById('rem')
 const forms = document.getElementById('span')
 const existe = document.getElementById('ingexistentes')
-const lista = document.getElementById('listaIng')
+const lista = document.getElementById('lista')
 const nome = document.getElementById('ticketName')
 
 
@@ -25,7 +25,7 @@ btnAdd.addEventListener('click', function(){
 })
 
 btnRem.addEventListener('click', function(){
-    if(listaIng.value != ''){
+    if(lista.value != ''){
         alert('lista vazia')
     }
 })
