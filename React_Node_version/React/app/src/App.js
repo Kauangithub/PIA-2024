@@ -16,7 +16,6 @@ import rio1 from './img/rio1.jpg';
 import rio2 from './img/rio2.jpg';
 
 // Importar scripts
-import './scripts/script.js'
 
 // Rotas e links
 function App() {
@@ -25,7 +24,6 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="admin" element={<Admin />} />
           <Route path="passeioescolar" element={<Passeio_escolar />} />
         </Route>
       </Routes>
@@ -123,49 +121,7 @@ const Home = () => {
   )
 }
 
-const Admin = () => {
-  return (
-    <>
-    <div class="container">
-        <h1>Gerenciar Ingressos</h1>
-        <div id="ingexistentes">
-            <ul id="listaIng">
-                
-            </ul>
-        </div>
-        <a href="/"><img src="https://cdn-icons-png.flaticon.com/512/1/1112.png" /></a>
-        <form id="ticketForm" method="post">
-            <span id="span">
-            <div class="form-group">
-                <label for="ticketName">Nome do Ingresso:</label>
-                <input type="text" id="ticketName" name="ticketName" required />
-            </div>
-            <div class="form-group">
-                <label for="ticketDescription">Descrição:</label>
-                <textarea id="ticketDescription" name="ticketDescription" rows="4" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="ticketPrice">Preço:</label>
-                <input type="number" id="ticketPrice" name="ticketPrice" step="0.01" required />
-            </div>
-            <div class="form-group">
-                <label for="ticketImage">Imagem:</label>
-                <input type="file" id="ticketImage" name="ticketImage" accept="image/*" required />
-            </div>
-            <button id="canc" type="button" onclick="cancel()">Cancelar</button>
-            </span>
 
-            <div class="botoes">
-            <button id="add" type="submit">Adicionar Ingresso</button>
-            
-            <button id="rem" type="button" onclick="remIng()">Remover Ingresso</button>
-            </div>
-            
-        </form>
-    </div>
-    </>
-  )
-}
 
 const Passeio_escolar = () => {
   return (

@@ -25,7 +25,7 @@ btnAdd.addEventListener('click', function(){
 })
 
 btnRem.addEventListener('click', function(){
-    if(listaIng.value != ''){
+    if(lista.value != ''){
         alert('lista vazia')
     }
 })
