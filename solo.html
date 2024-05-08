@@ -9,17 +9,20 @@
 
 <body>
     <div id="inicio">
-        <p>Ingressos dos Passeios Solos</p>
+        <p>Ingressos dos <br> Passeios Solos</p>
     </div>
 
     <div id="michelangelo">
-        <p>Frase de exemplo pra descrição- Explore a natureza em sua forma mais vibrante! Traga sua turma escolar para uma jornada emocionante de aprendizado e diversão em nosso parque de conservação. Reserve seus ingressos agora e desperte o espírito da aventura!</p>
+        <p>Frase de exemplo pra descrição- Explore a natureza em sua forma mais vibrante! Traga sua turma escolar para uma jornada emocionante de aprendizado e diversão em nosso parque de conservação. Reserve seus ingressos agora e desperte o espírito da aventura!
         <br>
-        <p>alguma informação importante</p>
         <br>
-        <p>campo aberto para informações ou cuidados ao ir para o parque....</p>
+        alguma informação importante
         <br>
-        <p>Para mais informações, entre em contato com email@gmail.com</p>
+        <br>
+        campo aberto para informações ou cuidados ao ir para o parque....
+        <br>
+        <br>
+        Para mais informações, entre em contato com email@gmail.com</p>
 
         <div id="kevin-hart">
           <img src="https://i.pinimg.com/736x/0f/24/7b/0f247b51e209b2812761ff50f17534fe.jpg">
@@ -29,31 +32,34 @@
     <div id="ingresso">
         <h2>Garanta já o seu ingresso!</h2>
     </div>
-
-        <div id="formulario">
-        <form>
-            <label for="name">Nome do professor/ responsável pelos alunos:</label>
+    
+    <div class="container">
+    <form class="form-container">
+        <div class="main-content">
+            <label for="name">Nome:</label>
             <input type="text" id="name" name="name" required placeholder="Digite aqui">
         
             <label for="email">E-mail:</label>
             <input type="email" id="email" name="email" required placeholder="Digite aqui">
-        
+            
             <label for="quantity">Quantidade de Ingressos:</label>
             <div class="quantity">
                 <input type="number" id="quantity" name="quantity" value="1" min="1">
                 <button type="button" id="decrease">-</button>
                 <button type="button" id="increase">+</button>
             </div>
-            <BR>
-            <label for="email">Data:</label>
-
-            <div id="valor">
-            <label for="value">Valor: R$ <span id="display-value">0</span>.00</label>
-            <input type="text" id="name" name="name" required placeholder="Cupom/ Voucher:">
-            <button type="submit">Continuar</button>
-
         </div>
-        </form>
+        
+        <div class="sidebar">
+            <div id="valor">
+                <label for="value"><b>VALOR TOTAL R$ <span id="display-value">0</span>.00</b></label>
+                <input type="text" id="name" name="name" required placeholder="Cupom/ Voucher:">
+                <button type="submit">Continuar</button>
+            </div>
+        </div>
+    </form>
+    
+
         
     </div>
        
