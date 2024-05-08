@@ -9,7 +9,7 @@
 
 <body>
     <div id="inicio">
-        <p>Ingressos dos passeios escolares</p>
+        <p>Ingressos dos <br> Passeios Escolares</p>
     </div>
 
     <div id="michelangelo">
@@ -29,37 +29,145 @@
     <div id="ingresso">
         <h2>Garanta já o seu ingresso!</h2>
     </div>
-
-        <div id="formulario">
-        <form>
+<div class="container">
+    <form class="form-container">
+        <div class="main-content">
             <label for="name">Nome do professor/ responsável pelos alunos:</label>
             <input type="text" id="name" name="name" required placeholder="Digite aqui">
         
             <label for="email">E-mail:</label>
             <input type="email" id="email" name="email" required placeholder="Digite aqui">
-        
+            
             <label for="quantity">Quantidade de Ingressos:</label>
             <div class="quantity">
                 <input type="number" id="quantity" name="quantity" value="1" min="1">
                 <button type="button" id="decrease">-</button>
                 <button type="button" id="increase">+</button>
             </div>
-            <BR>
-            <label for="email">Data:</label>
-
-          
-            <div id="valor">
-            <label for="value">Valor: R$ <span id="display-value">0</span>.00</label>
-            <input type="text" id="name" name="name" required placeholder="Cupom/ Voucher:">
-            <button type="submit">Continuar</button>
-
         </div>
-        </form>
         
+        <div class="sidebar">
+            <div id="valor">
+                <label for="value"><b>VALOR TOTAL R$ <span id="display-value">0</span>.00</b></label>
+                <input type="text" id="name" name="name" required placeholder="Cupom/ Voucher:">
+                <button type="submit">Continuar</button>
+            </div>
+        </div>
+    </form>        
     </div>
        
-    <script src="scripts/escolar.js">
-        
+    <script>
+        const decreaseButton = document.getElementById('decrease');
+        const increaseButton = document.getElementById('increase');
+        const quantityInput = document.getElementById('quantity');
+        const displayValue = document.getElementById("display-value");
+        const valueInput = document.getElementById("value");
+
+
+
+        let value = 0;
+
+increaseButton.addEventListener("click", () => {
+    const quantity = parseInt(quantityInput.value);
+    if (quantity > 0) {
+        value += 100;
+        displayValue.textContent = value;
+    }
+});
+
+decreaseButton.addEventListener("click", () => {
+    if (value > 0) {
+        value -= 100;
+        displayValue.textContent = value;
+    }
+});
+    
+        decreaseButton.addEventListener('click', function() {
+            if (parseInt(quantityInput.value) > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+            }
+        });
+    
+        increaseButton.addEventListener('click', function() {
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        });
+
+        const monthNames = ["JAN. DE", "FEV. DE", "MAR. DE", "ABR. DE", "MAI. DE", "JUN. DE",
+    "JUL. DE", "AGO. DE", "SET. DE", "OUT. DE", "NOV. DE", "DEZ. DE"];
+    
+    const currentDate = new Date();
+    let currentMonth = currentDate.getMonth();
+    let currentYear = currentDate.getFullYear();
+
+    function renderCalendar() {
+        const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+        const lastDayOfMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        const daysContainer = document.getElementById("days");
+        daysContainer.innerHTML = "";
+
+        // Adicionar dias anteriores, se necessário, para preencher a primeira semana
+        for (let i = 0; i < firstDayOfMonth; i++) {
+            const dayElement = document.createElement("div");
+            dayElement.classList.add("day");
+            daysContainer.appendChild(dayElement);
+        }
+
+        // Adicionar os dias do mês
+        for (let i = 1; i <= lastDayOfMonth; i++) {
+            const dayElement = document.createElement("div");
+            dayElement.classList.add("day");
+            dayElement.textContent = i;
+            dayElement.addEventListener("click", () => {
+                dayElement.classList.toggle("selected");
+            });
+            daysContainer.appendChild(dayElement);
+        }
+    }
+
+    function updateMonthText() {
+        const monthText = `${monthNames[currentMonth]} ${currentYear}`;
+        document.getElementById("current-month").textContent = monthText;
+    }
+
+    function goToPreviousMonth() {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        renderCalendar();
+        updateMonthText();
+    }
+
+    function goToNextMonth() {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        renderCalendar();
+        updateMonthText();
+    }
+    
+    function goToPreviousYear() {
+        currentYear--;
+        renderCalendar();
+        updateMonthText();
+    }
+
+    function goToNextYear() {
+        currentYear++;
+        renderCalendar();
+        updateMonthText();
+    }
+
+    document.getElementById("prev-month").addEventListener("click", goToPreviousMonth);
+    document.getElementById("next-month").addEventListener("click", goToNextMonth);
+    document.getElementById("prev-year").addEventListener("click", goToPreviousYear);
+    document.getElementById("next-year").addEventListener("click", goToNextYear);
+
+    renderCalendar();
+    updateMonthText();
     </script>
 </body>
 </html>

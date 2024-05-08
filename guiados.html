@@ -9,7 +9,7 @@
 
 <body>
     <div id="inicio">
-        <p>Ingressos dos Passeios Guiados</p>
+        <p>Ingressos dos <br> Passeios Guiados</p>
     </div>
 
     <div id="michelangelo">
@@ -30,30 +30,33 @@
         <h2>Garanta já o seu ingresso!</h2>
     </div>
 
-        <div id="formulario">
-        <form>
-            <label for="name">Nome do professor/ responsável pelos alunos:</label>
+    <div class="container">
+    <form class="form-container">
+        <div class="main-content">
+            <label for="name">Nome:</label>
             <input type="text" id="name" name="name" required placeholder="Digite aqui">
         
             <label for="email">E-mail:</label>
             <input type="email" id="email" name="email" required placeholder="Digite aqui">
-        
+            
             <label for="quantity">Quantidade de Ingressos:</label>
             <div class="quantity">
                 <input type="number" id="quantity" name="quantity" value="1" min="1">
                 <button type="button" id="decrease">-</button>
                 <button type="button" id="increase">+</button>
             </div>
-            <BR>
-            <label for="email">Data:</label>
-
-            
-            <div id="valor">
-            <label for="value">Valor: R$ <span id="display-value">0</span>.00</label>
-            <input type="text" id="name" name="name" required placeholder="Cupom/ Voucher:">
-            <button type="submit">Continuar</button>
         </div>
-        </form>
+        
+        <div class="sidebar">
+            <div id="valor">
+                <label for="value"><b>VALOR TOTAL R$ <span id="display-value">0</span>.00</b></label>
+                <input type="text" id="name" name="name" required placeholder="Cupom/ Voucher:">
+                <button type="submit">Continuar</button>
+            </div>
+        </div>
+    </form>
+    
+
         
     </div>
        
