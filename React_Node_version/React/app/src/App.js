@@ -16,6 +16,7 @@ import rio1 from './img/rio1.jpg';
 import rio2 from './img/rio2.jpg';
 
 // Importar scripts
+import './scripts/escolar.js'
 
 // Rotas e links
 function App() {
@@ -25,6 +26,8 @@ function App() {
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="passeioescolar" element={<Passeio_escolar />} />
+          <Route path="passeiosolo" element={<Passeio_solo />} />
+          <Route path="passeioguiado" element={<Passeio_guiado />} />
         </Route>
       </Routes>
     </BrowserRouter>
@@ -67,7 +70,7 @@ const Home = () => {
           <br></br>
         <section id="ticket-options">
         <div class="ticket-option">
-          <a href="#">
+          <a href="passeiosolo">
           <img src={rio1}></img>
           <p>A partir de R$0,00</p>
           <h3>Passeio Solo</h3>
@@ -75,7 +78,7 @@ const Home = () => {
         </div>
 
         <div class="ticket-option">
-          <a href="#">
+          <a href="passeioguiado">
           <img src={rio2}></img>
           <p>A partir de R$0,00</p>
           <h3>Passeio Guiado</h3>
@@ -120,8 +123,6 @@ const Home = () => {
     </>
   )
 }
-
-
 
 const Passeio_escolar = () => {
   return (
@@ -175,5 +176,112 @@ const Passeio_escolar = () => {
     </>
   )
 }
+
+const Passeio_solo = () => {
+  return (
+    <>
+      <div id="inicio">
+        <p>Ingressos dos passeios escolares</p>
+    </div>
+
+    <div id="michelangelo">
+        <p>Frase de exemplo pra descrição- Explore a natureza em sua forma mais vibrante! Traga sua turma escolar para uma jornada emocionante de aprendizado e diversão em nosso parque de conservação. Reserve seus ingressos agora e desperte o espírito da aventura!</p>
+        <br />
+        <p>alguma informação importante</p>
+        <br />
+        <p>campo aberto para informações ou cuidados ao ir para o parque....</p>
+        <br />
+        <p>Para mais informações, entre em contato com email@gmail.com</p>
+
+        <div id="kevin-hart">
+          <img src="https://i.pinimg.com/736x/0f/24/7b/0f247b51e209b2812761ff50f17534fe.jpg" />
+        </div>
+    </div>
+
+    <div id="ingresso">
+        <h2>Garanta já o seu ingresso!</h2>
+    </div>
+
+        <div id="formulario">
+        <form>
+            <label for="name">Nome do professor/ responsável pelos alunos:</label>
+            <input type="text" id="name" name="name" required placeholder="Digite aqui" />
+        
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required placeholder="Digite aqui" />
+        
+            <label for="quantity">Quantidade de Ingressos:</label>
+            <div class="quantity">
+                <input type="number" id="quantity" name="quantity" value="1" min="1" />
+                <button type="button" id="decrease">-</button>
+                <button type="button" id="increase">+</button>
+            </div>
+            <br></br>
+            <div id="valor">
+            <label for="value">Valor: R$ <span id="display-value">0</span>.00</label>
+            <input type="text" id="name" name="name" required placeholder="Cupom/ Voucher:" />
+            <button type="submit">Continuar</button>
+
+        </div>
+        </form>
+        
+    </div>
+    </>
+  )
+}
+
+const Passeio_guiado = () => {
+  return (
+    <>
+      <div id="inicio">
+        <p>Ingressos dos passeios escolares</p>
+    </div>
+
+    <div id="michelangelo">
+        <p>Frase de exemplo pra descrição- Explore a natureza em sua forma mais vibrante! Traga sua turma escolar para uma jornada emocionante de aprendizado e diversão em nosso parque de conservação. Reserve seus ingressos agora e desperte o espírito da aventura!</p>
+        <br />
+        <p>alguma informação importante</p>
+        <br />
+        <p>campo aberto para informações ou cuidados ao ir para o parque....</p>
+        <br />
+        <p>Para mais informações, entre em contato com email@gmail.com</p>
+
+        <div id="kevin-hart">
+          <img src="https://i.pinimg.com/736x/0f/24/7b/0f247b51e209b2812761ff50f17534fe.jpg" />
+        </div>
+    </div>
+
+    <div id="ingresso">
+        <h2>Garanta já o seu ingresso!</h2>
+    </div>
+
+        <div id="formulario">
+        <form>
+            <label for="name">Nome do professor/ responsável pelos alunos:</label>
+            <input type="text" id="name" name="name" required placeholder="Digite aqui" />
+        
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required placeholder="Digite aqui" />
+        
+            <label for="quantity">Quantidade de Ingressos:</label>
+            <div class="quantity">
+                <input type="number" id="quantity" name="quantity" value="1" min="1" />
+                <button type="button" id="decrease">-</button>
+                <button type="button" id="increase">+</button>
+            </div>
+            <br></br>
+            <div id="valor">
+            <label for="value">Valor: R$ <span id="display-value">0</span>.00</label>
+            <input type="text" id="name" name="name" required placeholder="Cupom/ Voucher:" />
+            <button type="submit">Continuar</button>
+
+        </div>
+        </form>
+        
+    </div>
+    </>
+  )
+}
+
 
 export default App;

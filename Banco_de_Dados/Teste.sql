@@ -18,7 +18,7 @@ USE Pia_2024 ;
 -- Table Pia_2024.Cadastro_ingresso
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Pia_2024.Cadastro_ingresso (
-  id INT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(45) NOT NULL,
   descricao LONGTEXT NOT NULL,
   preco DECIMAL(4,2) NOT NULL,
@@ -31,7 +31,7 @@ ENGINE = InnoDB;
 -- Table Pia_2024.Ingresso
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Pia_2024.Ingresso (
-  id INT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT,
   id_ingresso INT NOT NULL,
   nome_prof VARCHAR(45) NOT NULL,
   email VARCHAR(100) NOT NULL,
