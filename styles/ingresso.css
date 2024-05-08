@@ -2,10 +2,10 @@ body{
     background: linear-gradient(#d9d9d900, #d9d9d900, #008A66);
     background-repeat: no-repeat;
     height: auto;
+    align-content: center;
 }
 #inicio{
     align-content: center;
-    padding-left: 40%;
     width: auto;
     height: 50%;
     display: flex;
@@ -125,58 +125,6 @@ button[type="submit"]:hover {
     background-color: rgb(130, 236, 136);;
 }
 
-.calendar {
-    width: 300px;
-    margin: 0 auto;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    background-color: #008A66;
-    color: #ffffff;
-}
-
-.month {
-    text-align: center;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.month-text {
-    margin-right: 10px;
-    margin-left: 10px;
-}
-
-.weekdays {
-    display: flex;
-    justify-content: space-between;
-}
-
-.weekday {
-    width: calc(100% / 7);
-    text-align: center;
-    font-weight: bold;
-}
-
-.days {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.day {
-    width: calc(100% / 7);
-    text-align: center;
-    padding: 5px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    background-color: #CBFFF1;
-    color: #008A66;
-}
-
-.day.selected {
-    background-color: rgb(130, 236, 136);
-}
 
 .navigation {
     display: flex;
