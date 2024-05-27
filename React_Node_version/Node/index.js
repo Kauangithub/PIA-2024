@@ -16,7 +16,7 @@ const connection = mysql.createPool({
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: ''
+    password: 'aluno'
 });
 
 app.get('/', (req, res) => {
@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 
 const getAllCadastro_ingresso = async () => {
     const [query] = await connection.execute 
-    ('select * from Pia_2024.Cadastro_ingresso');
+    ('select * from pia_2024.Cadastro_ingresso');
     return query
 }
 
@@ -39,14 +39,14 @@ app.get('/Cadastro_ingresso', async (req,res) => {
 app.get('/Cadastro_ingresso/:id', async (req,res)=>{
     const {id} = req.params;
     const [query] = await connection.execute
-    ('select * from Pia_2024.Cadastro_ingresso where id = ?', [id]);
+    ('select * from pia_2024.Cadastro_ingresso where id = ?', [id]);
     if(query.length === 0) return res.status(400).json({mensagem: 'Nao encontrado. '});
     return res.status(200).json(query);
 })
 
 app.post('/Cadastro_ingresso', async (req,res)=>{
-    const {nome, descricao, preco, img} = req.body;
-    const [query] = await connection.execute('insert into Pia_2024.Cadastro_ingresso (nome, descricao, preco, img) values(?,?,?,?)', [nome, descricao, preco, img]);
+    const {ticketName, ticketDescription, ticketPrice, ticketImage} = req.body;
+    const [query] = await connection.execute('insert into pia_2024.cadastro_ingresso (nome, descricao, preco, img) values(?,?,?,?)', [ticketName, ticketDescription, ticketPrice, ticketImage]);
     if(query.length === 0) return res.status(400).json({mensagem: 'Erro na adição'});
     return res.status(200).json({ mensagem: 'Inserido com sucesso.' });
 })
@@ -55,7 +55,7 @@ app.post('/Cadastro_ingresso', async (req,res)=>{
 
 const getAllIngresso = async () => {
     const [query] = await connection.execute 
-    ('select * from Pia_2024.Ingresso');
+    ('select * from pia_2024.Ingresso');
     return query
 }
 
@@ -67,14 +67,14 @@ app.get('/Ingresso', async (req,res) => {
 app.get('/Ingresso/:id', async (req,res)=>{
     const {id} = req.params;
     const [query] = await connection.execute
-    ('select * from Pia_2024.Ingresso where id = ?', [id]);
+    ('select * from pia_2024.Ingresso where id = ?', [id]);
     if(query.length === 0) return res.status(400).json({mensagem: 'Nao encontrado. '});
     return res.status(200).json(query);
 })
 
 app.post('/Ingresso', async (req,res)=>{
     const {nome_prof, email, qtd, data_ingresso, data_compra, preco_total, preco} = req.body;
-    const [query] = await connection.execute('insert into Pia_2024.Ingresso (nome_prof, email, qtd, data_ingresso, data_compra, preco_total, preco) values(?,?,?,?,?,?,?)', [nome_prof, email, qtd, data_ingresso, data_compra, preco_total, preco]);
+    const [query] = await connection.execute('insert into pia_2024.Ingresso (nome_prof, email, qtd, data_ingresso, data_compra, preco_total, preco) values(?,?,?,?,?,?,?)', [nome_prof, email, qtd, data_ingresso, data_compra, preco_total, preco]);
     if(query.length === 0) return res.status(400).json({mensagem: 'Erro na adição'});
     return res.status(200).json({ mensagem: 'Inserido com sucesso.' });
 })

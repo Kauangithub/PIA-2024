@@ -16,7 +16,6 @@ import rio1 from './img/rio1.jpg';
 import rio2 from './img/rio2.jpg';
 
 // Importar scripts
-import './scripts/escolar.js'
 
 // Rotas e links
 function App() {
@@ -25,6 +24,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path='admin' element={<Admin />} />
           <Route path="passeioescolar" element={<Passeio_escolar />} />
           <Route path="passeiosolo" element={<Passeio_solo />} />
           <Route path="passeioguiado" element={<Passeio_guiado />} />
@@ -120,6 +120,14 @@ const Home = () => {
               
         <p>&copy; 2024 SUS. All rights reserved.</p>
       </footer>
+    </>
+  )
+}
+
+const Admin = () => {
+  return (
+    <>
+    <CadastrarIngresso></CadastrarIngresso>
     </>
   )
 }
@@ -283,5 +291,82 @@ const Passeio_guiado = () => {
   )
 }
 
+const CadastrarIngresso = () => {
+  const [ticketName, setTicketName] = useState('');
+  const [ticketDescription, setTicketDescription] = useState('');
+  const [ticketPrice, setTicketPrice] = useState('');
+  const [ticketImage, setTicketImage] = useState('');
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+ 
+    try {
+      // Envia os dados para a rota usando o método POST
+      await axios.post('http://localhost:3333/Cadastro_ingresso', { ticketName, ticketDescription, ticketPrice, ticketImage });
+      alert('Dados enviados com sucesso!');
+      // Limpa os campos após o envio bem-sucedido
+      setTicketName('');
+      setTicketDescription('');
+      setTicketPrice('');
+      setTicketImage('');
+ 
+    } catch (error) {
+      console.error('Erro ao enviar dados:', error);
+      alert('Erro ao enviar dados. Consulte o console para mais detalhes.');
+    }
+  };
+
+  return(
+    <div>
+      <div>
+        <div>
+          <div>
+            <h1>Dados do ingresso</h1>
+          </div>
+          <div>
+            <form onSubmit={handleSubmit}>
+              <div>
+                <label>Nome do ingresso:</label>
+                <input
+                  type="text"
+                  value={ticketName}
+                  onChange={(e) => setTicketName(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label>Descrição:</label>
+                <input
+                  type="text"
+                  value={ticketDescription}
+                  onChange={(e) => setTicketDescription(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label>Preço:</label>
+                <input
+                  type="number"
+                  value={ticketPrice}
+                  onChange={(e) => setTicketPrice(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label>Imagem</label>
+                <input
+                  type="file"
+                  value={ticketImage}
+                  onChange={(e) => setTicketImage(e.target.value)}
+                  required
+                />
+              </div>
+              <input type="submit"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 export default App;
