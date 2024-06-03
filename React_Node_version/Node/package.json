@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "blob-util": "^2.0.2",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "mysql2": "^3.9.6"

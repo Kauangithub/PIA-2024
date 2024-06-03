@@ -1,5 +1,6 @@
 const express=require('express');
 const cors=require('cors');
+const blobUtil = require('blob-util');
 
 const app = express();
 app.use(express.urlencoded({ extend: true}));
@@ -35,6 +36,7 @@ app.get('/Cadastro_ingresso', async (req,res) => {
     const consulta = await getAllCadastro_ingresso();
     return res.status(200).json(consulta)
 })
+  
 
 app.get('/Cadastro_ingresso/:id', async (req,res)=>{
     const {id} = req.params;

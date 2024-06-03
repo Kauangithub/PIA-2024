@@ -1,0 +1,333 @@
+/* --- FONTES --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+@font-face {
+    font-family: Heavitas;
+    src: url(../fonts/Heavitas.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+:root {
+    --bg: #008A66;
+    --cor1: #CBFFF1;
+    --cinza: #1E1E1E;
+}
+
+body {
+    background-color: var(--bg);
+    overflow-x: hidden;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.w50 {
+    width: 50%;
+}
+
+.gradiente {
+    width: 100%;
+    height: 70%;
+    justify-content: end;
+    background: linear-gradient(rgba(0, 0, 0, 0), var(--bg));
+}
+
+.nav {
+    width: 100%;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+}
+
+.nav-container {
+    width: 500px;
+}
+
+.nav-item {
+    width: 20%;
+    text-decoration: none;
+}
+
+.nav-item p {
+    color: #FFF;
+    font-size: 15px;
+}
+
+.nav-item img {
+    width: 35%;
+    margin-bottom: 5px;
+}
+
+.home>div p {
+    font-size: 20px;
+}
+
+.home img {
+    width: 45%;
+}
+
+.banner {
+    height: 50vh;
+    margin-bottom: 30px;
+    background: url(../img/inicio-bg.webp) center/250% no-repeat;
+    justify-content: end;
+}
+
+#banner-ingressos {
+    background-image: url(https://www.caragua.tur.br/wp-content/uploads/2023/06/1.jpg);
+}
+
+#banner-404 {
+    background-image: url(../img/404.webp);
+}
+
+.logo {
+    width: 80%;
+    padding-bottom: 10px;
+    border-bottom: 2px dashed #FFF;
+}
+
+.conteudo {
+    gap: 20px;
+}
+
+p {
+    color: var(--cor1);
+    font-size: 20px;
+    text-align: center;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Heavitas', Arial, Helvetica, sans-serif;
+    color: #FFF;
+    font-weight: 400;
+}
+
+h1 {
+    margin-top: 30px;
+    font-size: 35px;
+    text-align: center;
+}
+
+a {
+    color: var(--cor1);
+    font-size: 20px;
+}
+
+.cards,
+.cards a {
+    width: 100%;
+}
+
+.card-trilha {
+    background-color: var(--cor1);
+    border-radius: 10px;
+    width: 100%;
+}
+
+h4 {
+    font-size: 25px;
+    color: var(--bg);
+}
+
+.cards-horizontal {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+}
+
+.card-trilha {
+    flex: 1;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-container {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.card-trilha p {
+    color: #000;
+    font-size: 18px;
+    text-align: left;
+}
+
+.card-trilha img {
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.card-trilha span,
+label {
+    font-weight: bold;
+    color: var(--bg);
+}
+
+form {
+    background-color: var(--cor1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+form .horizontal {
+    width: 100%;
+    justify-content: space-between;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input,
+form select,
+form button,
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    background-color: var(--cor1);
+    border: 2px solid var(--bg);
+    border-radius: 5px;
+}
+
+form button {
+    background-color: var(--bg);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.gap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.botao {
+    text-decoration: none;
+    color: var(--bg);
+    background-color: var(--cor1);
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: block;
+}
+
+.botao2 {
+    text-decoration: none;
+    color: var(--cor1);
+    background-color: var(--bg);
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: block;
+}
+
+footer {
+    margin-top: 50px;
+    padding: 50px;
+    padding-bottom: 150px;
+    background-color: var(--cinza);
+}
+
+#caraguatatuba {
+    width: 100%;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed #FFF;
+}
+
+footer .links {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.links img {
+    width: 100%;
+}
+
+/* Desktop */
+
+@media (990px <=width) {
+    .container {
+        width: 60%;
+    }
+
+    .nav {
+        top: 0;
+    }
+
+    .cards-horizontal {
+        flex-direction: row;
+    }
+
+    .trilhas {
+        flex-direction: row;
+    }
+
+    .banner {
+        background-size: 100%;
+    }
+
+    .banner .logo,
+    #caraguatatuba,
+    footer .links {
+        width: 30%;
+        margin: 0;
+    }
+
+    #caraguatatuba {
+        padding: 0;
+        border: 0;
+        padding-right: 20px;
+        border-right: 2px dashed #FFF;
+    }
+
+    footer .center {
+        flex-direction: row;
+    }
+
+    footer {
+        padding: 50px;
+    }
+}

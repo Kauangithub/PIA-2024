@@ -5,15 +5,19 @@ import { Outlet, Link } from "react-router-dom";
 
 
 // Importar css
-import './styles/style.css'
-import './styles/cadastro.css'
-import './styles/ingresso.css'
+import './styles/base.css'
+import './styles/pagina.css'
 
 // Importar imagens da pasta img dentro de src
-import J from './img/J.png';
-import matheus from './img/matheus.jpg';
-import rio1 from './img/rio1.jpg';
-import rio2 from './img/rio2.jpg';
+import explorar from './img/explorar.png';
+import logo from './img/logo.png';
+import info from './img/info.png';
+import site_parque from './img/Site Parque.svg';
+import caragua from './img/caraguatatuba.png'
+import instagram from './img/instagram.png'
+import facebook from './img/facebook.png'
+import flickr from './img/flickr.png'
+import youtube from './img/youtube.png'
 
 // Importar scripts
 
@@ -28,6 +32,7 @@ function App() {
           <Route path="passeioescolar" element={<Passeio_escolar />} />
           <Route path="passeiosolo" element={<Passeio_solo />} />
           <Route path="passeioguiado" element={<Passeio_guiado />} />
+          <Route path="teste" element={<Teste />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
@@ -38,7 +43,31 @@ function App() {
 const Layout = () => {
   return (
     <>
-      <br></br>
+      <div class="nav center horizontal">
+      <div class="nav-container horizontal center">
+        <a href="" class="nav-item">
+          <div class="center"><img src={explorar} alt="Explorar" />
+            <p>Explorar</p>
+          </div>
+        </a>
+        <a href="" class="nav-item home">
+          <div class="center"><img src={logo} alt="Início" />
+            <p>Início</p>
+          </div>
+        </a>
+        <a href="" class="nav-item">
+          <div class="center"><img src={info} alt="Informações" />
+            <p>Contato</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <section class="banner center" id="banner-ingressos">
+      <div class="gradiente center">
+        <img src={site_parque} alt="logo" class="logo" />
+      </div>
+    </section>
       <Outlet />
     </>
   )
@@ -47,79 +76,62 @@ const Layout = () => {
 const Home = () => {
   return(
     <>
-      <header>
-      <img src="https://www.caragua.tur.br/wp-content/uploads/2023/06/1.jpg"></img>
-      <a class="linkAdm" href="admin"><p>Admin</p></a>
-      <div class="meio-header">
-        <img id="logo" src={J}></img>
-        <div class="meio-header-texto">
-          <h1 id="parque">PARQUE NATURAL MUNICIPAL</h1>
-          <h1 id="ju">JUQUERIQUERÊ</h1>
+      <div class="container">
+      <section class="conteudo center">
+        <h1>ingressos</h1>
+        <p>
+          Lazer, diversão e conexão com a natureza.<br />
+          Acesso ao parque com valores diferenciados e benefícios exclusivos.
+        </p>
+        <a href="admin" class="botao">Admin</a>
+
+        <div class="cards">
+          <a href="">
+            <div class="card-trilha">
+              <img src="" alt="" />
+              <div class="card-container">
+                <h4>Passeio solo</h4>
+                <p>A partir de R$ 0,00</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="">
+            <div class="card-trilha">
+              <img src="" alt="" />
+              <div class="card-container">
+                <h4>Passeio guiado</h4>
+                <p>A partir de R$ 0,00</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="">
+            <div class="card-trilha">
+              <img src="" alt="" />
+              <div class="card-container">
+                <h4>Passeio escolar</h4>
+                <p>A partir de R$ 0,00</p>
+              </div>
+            </div>
+          </a>
         </div>
-        <p>Compre seus ingressos aqui!</p>
+      </section>
+    </div>
+
+    <footer>
+      <div class="container center conteudo">
+        <img src={caragua}
+          alt="Prefeitura Municipal de Caraguatatuba - Secretaria Municipal de Meio Ambiente" id="caraguatatuba" />
+
+        <div class="links horizontal">
+          <a href=""><img src={instagram} alt="Instagram" /></a>
+          <a href=""><img src={facebook} alt="Facebook" /></a>
+          <a href=""><img src={youtube} alt="YouTube" /></a>
+          <a href=""><img src={flickr} alt="Flickr" /></a>
+        </div>
       </div>
-        </header>
-        <main>
-          <section id="tickets-desc">
-          <div class="titulo">
-            <h1>Lazer, diversão e conexão com a natureza</h1>
-            <p>Acesso ao parque com valores diferenciados e benefícios exclusivos</p>
-          </div>
-        
-          </section>
-          <br></br>
-        <section id="ticket-options">
-        <div class="ticket-option">
-          <a href="passeiosolo">
-          <img src={rio1}></img>
-          <p>A partir de R$0,00</p>
-          <h3>Passeio Solo</h3>
-          </a>
-        </div>
-
-        <div class="ticket-option">
-          <a href="passeioguiado">
-          <img src={rio2}></img>
-          <p>A partir de R$0,00</p>
-          <h3>Passeio Guiado</h3>
-          </a>
-        </div>
-        
-        <div class="ticket-option">
-          <a href="passeioescolar">
-          <img src={matheus}></img>
-          <p>A partir de R$0,00</p>
-          <h3>Passeio Escolar</h3>
-          </a>
-        </div>
-          
-        </section>
-      </main>
-
-      <footer>
-        <section id="info">
-          <section class="info1">
-            <h2>Sobre nós</h2>
-            <p>Nós somos um companhia destinada à preservação e manutenção do Parque Municipal do Rio Juqueriquerê.</p>
-          </section>
-
-          <section class="info2">
-            <h2>Nossos Serviços</h2>
-            <ul>
-              <li><a href="#">Observação de passáros</a></li>
-              <li><a href="#">Trilhas</a></li>
-              <li><a href="#">Passeios guiados</a></li>
-            </ul>
-          </section>
-
-          <section class="info3">
-            <h2>Contatos</h2>
-            <p>Contact us at [insert contact information].</p>
-          </section>
-          </section>
-              
-        <p>&copy; 2024 SUS. All rights reserved.</p>
-      </footer>
+    </footer>
     </>
   )
 }
@@ -131,6 +143,20 @@ const Admin = () => {
     </>
   )
 }
+
+const Teste = () => {
+  return (
+    <>
+    <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+    <h1>Listar Ingressos</h1>
+    <ExibirIngresso></ExibirIngresso>
+    </>  
+ )
+ };
 
 const Passeio_escolar = () => {
   return (
@@ -369,4 +395,56 @@ const CadastrarIngresso = () => {
     </div>
   )
 }
+
+const ExibirIngresso = () => {
+  const [cadastro_ingresso, setData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const resposta = await axios.get('http://localhost:3333/Cadastro_ingresso');
+      setData(resposta.data);
+    };
+    fetchData();
+  }, []);
+
+  return(
+    <section id="ticket-options">
+      {cadastro_ingresso.map((cadastro_ingresso, index) => (
+          <div key={index} class="ticket-option">
+              <ImageComponent></ImageComponent>
+              <p>A partir de R${cadastro_ingresso.preco}</p>
+              <h3>{cadastro_ingresso.nome}</h3>
+          </div>
+          ))}
+        
+    </section>
+  )
+}
+
+const ImageComponent = () => {
+  const [imageSrc, setImageSrc] = useState('');
+
+  useEffect(() => {
+    // Aqui você irá recuperar o blob do banco de dados
+    // e converter para Base64
+    fetch('http://localhost:3333/Cadastro_ingresso')
+      .then(response => response.blob())
+      .then(blob => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const dataURL = reader.result;
+          setImageSrc(dataURL);
+        };
+        reader.readAsDataURL(blob);
+      })
+      .catch(error => {
+        console.error('Erro ao recuperar a imagem:', error);
+      });
+  }, []);
+
+  return (
+    <div>
+      {imageSrc && <img src={imageSrc} alt="Imagem" />}
+    </div>
+  );
+};
 export default App;
