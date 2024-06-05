@@ -108,6 +108,7 @@ const Home = () => {
 const Admin = () => {
   return (
     <>
+    <ExibirIngresso_lista></ExibirIngresso_lista>
     <CadastrarIngresso></CadastrarIngresso>
     </>
   )
@@ -401,25 +402,24 @@ const ExibirIngresso_lista = () => {
   }, []);
 
   return(
-    <div class="cards">
-      {cadastro_ingresso.map((cadastro_ingresso, index) => (
-          //<div key={index} class="ticket-option">
-            //  <ImageComponent></ImageComponent>
-              //<p>A partir de R${cadastro_ingresso.preco}</p>
-              //<h3>{cadastro_ingresso.nome}</h3>
-         // </div>
-
-      <a key={index}>
-      <div class="card-trilha">
-        <img src=''/>
-        <div class="card-container">
-          <h4>{cadastro_ingresso.nome}</h4>
-          <p>A partir de R$ {cadastro_ingresso.preco}</p>
-        </div>
-      </div>
-      </a>
+    <table style={{ borderCollapse: 'collapse', width: '100%' }}>
+        <thead>
+          <tr style={{ borderBottom: '1px solid #ddd' }}>
+            <th style={{ padding: '8px', textAlign: 'left' }}>Nome</th>
+            <th style={{ padding: '8px', textAlign: 'left' }}>Descrição</th>
+            <th style={{ padding: '8px', textAlign: 'left' }}>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          {cadastro_ingresso.map((cadastro_ingresso, index) => (
+            <tr key={index} style={{ borderBottom: '1px solid #ddd' }}>
+              <td style={{ padding: '8px' }}>{cadastro_ingresso.nome}</td>
+              <td style={{ padding: '8px' }}>{cadastro_ingresso.descricao}</td>
+              <td style={{ padding: '8px' }}>{cadastro_ingresso.preco}</td>
+            </tr>
           ))}
-    </div>
+        </tbody>
+      </table>
   )
 }
 
