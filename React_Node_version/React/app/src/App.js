@@ -19,7 +19,6 @@ import facebook from './img/facebook.png'
 import flickr from './img/flickr.png'
 import youtube from './img/youtube.png'
 
-// Importar scripts
 
 // Rotas e links
 function App() {
@@ -32,7 +31,6 @@ function App() {
           <Route path="passeioescolar" element={<Passeio_escolar />} />
           <Route path="passeiosolo" element={<Passeio_solo />} />
           <Route path="passeioguiado" element={<Passeio_guiado />} />
-          <Route path="teste" element={<Teste />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
@@ -50,7 +48,7 @@ const Layout = () => {
             <p>Explorar</p>
           </div>
         </a>
-        <a href="" class="nav-item home">
+        <a href="/" class="nav-item home">
           <div class="center"><img src={logo} alt="Início" />
             <p>Início</p>
           </div>
@@ -85,37 +83,8 @@ const Home = () => {
         </p>
         <a href="admin" class="botao">Admin</a>
 
-        <div class="cards">
-          <a href="">
-            <div class="card-trilha">
-              <img src="" alt="" />
-              <div class="card-container">
-                <h4>Passeio solo</h4>
-                <p>A partir de R$ 0,00</p>
-              </div>
-            </div>
-          </a>
-
-          <a href="">
-            <div class="card-trilha">
-              <img src="" alt="" />
-              <div class="card-container">
-                <h4>Passeio guiado</h4>
-                <p>A partir de R$ 0,00</p>
-              </div>
-            </div>
-          </a>
-
-          <a href="">
-            <div class="card-trilha">
-              <img src="" alt="" />
-              <div class="card-container">
-                <h4>Passeio escolar</h4>
-                <p>A partir de R$ 0,00</p>
-              </div>
-            </div>
-          </a>
-        </div>
+        <ExibirIngresso_card></ExibirIngresso_card>
+      
       </section>
     </div>
 
@@ -143,20 +112,6 @@ const Admin = () => {
     </>
   )
 }
-
-const Teste = () => {
-  return (
-    <>
-    <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-    <h1>Listar Ingressos</h1>
-    <ExibirIngresso></ExibirIngresso>
-    </>  
- )
- };
 
 const Passeio_escolar = () => {
   return (
@@ -347,9 +302,14 @@ const CadastrarIngresso = () => {
       <div>
         <div>
           <div>
-            <h1>Dados do ingresso</h1>
+            <h1>Ingressos existentes:</h1>
+
           </div>
           <div>
+            <h1>Dados do ingresso</h1>
+          </div>
+          <br />
+          <div class="center">
             <form onSubmit={handleSubmit}>
               <div>
                 <label>Nome do ingresso:</label>
@@ -390,13 +350,14 @@ const CadastrarIngresso = () => {
               <input type="submit"/>
             </form>
           </div>
+          <br />
         </div>
       </div>
     </div>
   )
 }
 
-const ExibirIngresso = () => {
+const ExibirIngresso_card = () => {
   const [cadastro_ingresso, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -407,44 +368,59 @@ const ExibirIngresso = () => {
   }, []);
 
   return(
-    <section id="ticket-options">
+    <div class="cards">
       {cadastro_ingresso.map((cadastro_ingresso, index) => (
-          <div key={index} class="ticket-option">
-              <ImageComponent></ImageComponent>
-              <p>A partir de R${cadastro_ingresso.preco}</p>
-              <h3>{cadastro_ingresso.nome}</h3>
-          </div>
+          //<div key={index} class="ticket-option">
+            //  <ImageComponent></ImageComponent>
+              //<p>A partir de R${cadastro_ingresso.preco}</p>
+              //<h3>{cadastro_ingresso.nome}</h3>
+         // </div>
+
+      <a key={index}>
+      <div class="card-trilha">
+        <img src=''/>
+        <div class="card-container">
+          <h4>{cadastro_ingresso.nome}</h4>
+          <p>A partir de R$ {cadastro_ingresso.preco}</p>
+        </div>
+      </div>
+      </a>
           ))}
-        
-    </section>
+    </div>
   )
 }
 
-const ImageComponent = () => {
-  const [imageSrc, setImageSrc] = useState('');
-
+const ExibirIngresso_lista = () => {
+  const [cadastro_ingresso, setData] = useState([]);
   useEffect(() => {
-    // Aqui você irá recuperar o blob do banco de dados
-    // e converter para Base64
-    fetch('http://localhost:3333/Cadastro_ingresso')
-      .then(response => response.blob())
-      .then(blob => {
-        const reader = new FileReader();
-        reader.onload = () => {
-          const dataURL = reader.result;
-          setImageSrc(dataURL);
-        };
-        reader.readAsDataURL(blob);
-      })
-      .catch(error => {
-        console.error('Erro ao recuperar a imagem:', error);
-      });
+    const fetchData = async () => {
+      const resposta = await axios.get('http://localhost:3333/Cadastro_ingresso');
+      setData(resposta.data);
+    };
+    fetchData();
   }, []);
 
-  return (
-    <div>
-      {imageSrc && <img src={imageSrc} alt="Imagem" />}
+  return(
+    <div class="cards">
+      {cadastro_ingresso.map((cadastro_ingresso, index) => (
+          //<div key={index} class="ticket-option">
+            //  <ImageComponent></ImageComponent>
+              //<p>A partir de R${cadastro_ingresso.preco}</p>
+              //<h3>{cadastro_ingresso.nome}</h3>
+         // </div>
+
+      <a key={index}>
+      <div class="card-trilha">
+        <img src=''/>
+        <div class="card-container">
+          <h4>{cadastro_ingresso.nome}</h4>
+          <p>A partir de R$ {cadastro_ingresso.preco}</p>
+        </div>
+      </div>
+      </a>
+          ))}
     </div>
-  );
-};
+  )
+}
+
 export default App;

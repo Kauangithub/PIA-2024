@@ -58,7 +58,6 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(20px);
     position: fixed;
-    bottom: 0;
     z-index: 1;
 }
 
@@ -142,6 +141,8 @@ a {
 .cards,
 .cards a {
     width: 100%;
+    flex-wrap: wrap;
+    flex: 1 1 240px;
 }
 
 .card-trilha {
@@ -201,7 +202,7 @@ form {
     background-color: var(--cor1);
     padding: 20px;
     border-radius: 10px;
-    width: 100% !important;
+    width: 80% !important;
     display: flex;
     flex-direction: column;
     gap: 20px;
