@@ -22,15 +22,24 @@ import youtube from './img/youtube.png'
 
 // Rotas e links
 function App() {
+  const [cadastro_ingresso, setData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const resposta = await axios.get('http://localhost:3333/Cadastro_ingresso');
+      setData(resposta.data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
           <Route path='admin' element={<Admin />} />
-          <Route path="passeioescolar" element={<Passeio_escolar />} />
-          <Route path="passeiosolo" element={<Passeio_solo />} />
-          <Route path="passeioguiado" element={<Passeio_guiado />} />
+          {cadastro_ingresso.map((cadastro_ingresso, index) => (
+            <Route key={index} path={cadastro_ingresso.nome} element={<Ingresso/>} />
+          ))}
         </Route>
       </Routes>
     </BrowserRouter>
@@ -71,6 +80,7 @@ const Layout = () => {
   )
 };
 
+// Páginas
 const Home = () => {
   return(
     <>
@@ -114,165 +124,62 @@ const Admin = () => {
   )
 }
 
-const Passeio_escolar = () => {
+const Ingresso = () => {
   return (
     <>
-      <div id="inicio">
-        <p>Ingressos dos passeios escolares</p>
-    </div>
-
-    <div id="michelangelo">
-        <p>Frase de exemplo pra descrição- Explore a natureza em sua forma mais vibrante! Traga sua turma escolar para uma jornada emocionante de aprendizado e diversão em nosso parque de conservação. Reserve seus ingressos agora e desperte o espírito da aventura!</p>
-        <br />
-        <p>alguma informação importante</p>
-        <br />
-        <p>campo aberto para informações ou cuidados ao ir para o parque....</p>
-        <br />
-        <p>Para mais informações, entre em contato com email@gmail.com</p>
-
-        <div id="kevin-hart">
-          <img src="https://i.pinimg.com/736x/0f/24/7b/0f247b51e209b2812761ff50f17534fe.jpg" />
-        </div>
-    </div>
-
-    <div id="ingresso">
-        <h2>Garanta já o seu ingresso!</h2>
-    </div>
-
-        <div id="formulario">
-        <form>
-            <label for="name">Nome do professor/ responsável pelos alunos:</label>
-            <input type="text" id="name" name="name" required placeholder="Digite aqui" />
-        
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required placeholder="Digite aqui" />
-        
-            <label for="quantity">Quantidade de Ingressos:</label>
-            <div class="quantity">
-                <input type="number" id="quantity" name="quantity" value="1" min="1" />
-                <button type="button" id="decrease">-</button>
-                <button type="button" id="increase">+</button>
+      <div class="container">
+        <div class="conteudo center">
+            <h1>Passeio guiado</h1>
+            <div class="horizontal content">
+                <div class="conteudo w50">
+                    <p>
+                        Frase de exemplo pra descrição- Explore a natureza em sua forma mais vibrante! Traga sua turma escolar para uma jornada emocionante de aprendizado e diversão em nosso parque de conservação. Reserve seus ingressos agora e desperte o espírito da aventura!
+                    </p>
+                    <p>alguma informação importante</p>
+                    <p>campo aberto para informações ou cuidados ao ir para o parque....</p>
+                    <p>Para mais informações, entre em contato com email@gmail.com</p>
+                </div>
+                <div class="w50"><img src="https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg" /></div>
             </div>
-            <br></br>
-            <div id="valor">
-            <label for="value">Valor: R$ <span id="display-value">0</span>.00</label>
-            <input type="text" id="name" name="name" required placeholder="Cupom/ Voucher:" />
-            <button type="submit">Continuar</button>
 
+            <form class="form-container">
+                <h4 class="center">Garanta já seu ingresso</h4>
+                <div class="horizontal" id="pagamento">
+                    <div class="w50 gap">
+                        <div>
+                            <label for="name">Nome do professor/ responsável pelos alunos:</label>
+                            <input type="text" id="name" name="name" required placeholder="Digite aqui" />
+                        </div>
+                        <div>
+                            <label for="email">E-mail:</label>
+                            <input type="email" id="email" name="email" required placeholder="Digite aqui" />
+                        </div>
+                        <div>
+                            <label for="quantity">Quantidade de Ingressos:</label>
+                            <input type="number" id="quantity" name="quantity" value="1" min="1" />
+                        </div>
+                        <div class="horizontal">
+                            <button type="button" id="decrease">-</button>
+                            <button type="button" id="increase">+</button>
+                        </div>
+                    </div>
+                    <div class="w50 gap">
+                        <div>
+                            <label for="value"><b>VALOR TOTAL R$ <span id="display-value">0</span>.00</b></label>
+                            <input type="text" id="name" name="name" required placeholder="Cupom/ Voucher:" />
+                        </div>
+                        <button type="submit">Continuar</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        </form>
-        
     </div>
+    <br></br>
     </>
   )
 }
 
-const Passeio_solo = () => {
-  return (
-    <>
-      <div id="inicio">
-        <p>Ingressos dos passeios escolares</p>
-    </div>
-
-    <div id="michelangelo">
-        <p>Frase de exemplo pra descrição- Explore a natureza em sua forma mais vibrante! Traga sua turma escolar para uma jornada emocionante de aprendizado e diversão em nosso parque de conservação. Reserve seus ingressos agora e desperte o espírito da aventura!</p>
-        <br />
-        <p>alguma informação importante</p>
-        <br />
-        <p>campo aberto para informações ou cuidados ao ir para o parque....</p>
-        <br />
-        <p>Para mais informações, entre em contato com email@gmail.com</p>
-
-        <div id="kevin-hart">
-          <img src="https://i.pinimg.com/736x/0f/24/7b/0f247b51e209b2812761ff50f17534fe.jpg" />
-        </div>
-    </div>
-
-    <div id="ingresso">
-        <h2>Garanta já o seu ingresso!</h2>
-    </div>
-
-        <div id="formulario">
-        <form>
-            <label for="name">Nome do professor/ responsável pelos alunos:</label>
-            <input type="text" id="name" name="name" required placeholder="Digite aqui" />
-        
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required placeholder="Digite aqui" />
-        
-            <label for="quantity">Quantidade de Ingressos:</label>
-            <div class="quantity">
-                <input type="number" id="quantity" name="quantity" value="1" min="1" />
-                <button type="button" id="decrease">-</button>
-                <button type="button" id="increase">+</button>
-            </div>
-            <br></br>
-            <div id="valor">
-            <label for="value">Valor: R$ <span id="display-value">0</span>.00</label>
-            <input type="text" id="name" name="name" required placeholder="Cupom/ Voucher:" />
-            <button type="submit">Continuar</button>
-
-        </div>
-        </form>
-        
-    </div>
-    </>
-  )
-}
-
-const Passeio_guiado = () => {
-  return (
-    <>
-      <div id="inicio">
-        <p>Ingressos dos passeios escolares</p>
-    </div>
-
-    <div id="michelangelo">
-        <p>Frase de exemplo pra descrição- Explore a natureza em sua forma mais vibrante! Traga sua turma escolar para uma jornada emocionante de aprendizado e diversão em nosso parque de conservação. Reserve seus ingressos agora e desperte o espírito da aventura!</p>
-        <br />
-        <p>alguma informação importante</p>
-        <br />
-        <p>campo aberto para informações ou cuidados ao ir para o parque....</p>
-        <br />
-        <p>Para mais informações, entre em contato com email@gmail.com</p>
-
-        <div id="kevin-hart">
-          <img src="https://i.pinimg.com/736x/0f/24/7b/0f247b51e209b2812761ff50f17534fe.jpg" />
-        </div>
-    </div>
-
-    <div id="ingresso">
-        <h2>Garanta já o seu ingresso!</h2>
-    </div>
-
-        <div id="formulario">
-        <form>
-            <label for="name">Nome do professor/ responsável pelos alunos:</label>
-            <input type="text" id="name" name="name" required placeholder="Digite aqui" />
-        
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required placeholder="Digite aqui" />
-        
-            <label for="quantity">Quantidade de Ingressos:</label>
-            <div class="quantity">
-                <input type="number" id="quantity" name="quantity" value="1" min="1" />
-                <button type="button" id="decrease">-</button>
-                <button type="button" id="increase">+</button>
-            </div>
-            <br></br>
-            <div id="valor">
-            <label for="value">Valor: R$ <span id="display-value">0</span>.00</label>
-            <input type="text" id="name" name="name" required placeholder="Cupom/ Voucher:" />
-            <button type="submit">Continuar</button>
-
-        </div>
-        </form>
-        
-    </div>
-    </>
-  )
-}
-
+// Funções
 const CadastrarIngresso = () => {
   const [ticketName, setTicketName] = useState('');
   const [ticketDescription, setTicketDescription] = useState('');
@@ -377,7 +284,7 @@ const ExibirIngresso_card = () => {
               //<h3>{cadastro_ingresso.nome}</h3>
          // </div>
 
-      <a key={index}>
+      <a key={index} href=''>
       <div class="card-trilha">
         <img src=''/>
         <div class="card-container">
@@ -402,9 +309,10 @@ const ExibirIngresso_lista = () => {
   }, []);
 
   return(
-    <table style={{ borderCollapse: 'collapse', width: '100%' }}>
+    <table style={{ borderCollapse: 'collapse', width: '100%', color: 'white' }}>
         <thead>
           <tr style={{ borderBottom: '1px solid #ddd' }}>
+          <th style={{ padding: '8px', textAlign: 'left' }}>ID</th>
             <th style={{ padding: '8px', textAlign: 'left' }}>Nome</th>
             <th style={{ padding: '8px', textAlign: 'left' }}>Descrição</th>
             <th style={{ padding: '8px', textAlign: 'left' }}>Preço</th>
@@ -413,6 +321,7 @@ const ExibirIngresso_lista = () => {
         <tbody>
           {cadastro_ingresso.map((cadastro_ingresso, index) => (
             <tr key={index} style={{ borderBottom: '1px solid #ddd' }}>
+              <td style={{ padding: '8px' }}>{cadastro_ingresso.id}</td>
               <td style={{ padding: '8px' }}>{cadastro_ingresso.nome}</td>
               <td style={{ padding: '8px' }}>{cadastro_ingresso.descricao}</td>
               <td style={{ padding: '8px' }}>{cadastro_ingresso.preco}</td>

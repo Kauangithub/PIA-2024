@@ -53,6 +53,13 @@ app.post('/Cadastro_ingresso', async (req,res)=>{
     return res.status(200).json({ mensagem: 'Inserido com sucesso.' });
 })
 
+app.delete('/Cadastro_ingresso/:id', async (req,res)=>{
+    const { id } = req.params;
+    const [query] = await connection.execute('delete from pia_2024.cadastro_ingresso where id = ?', [id]);
+    if (query.affectedRows === 0) return res.status(404).json({ mensagem: 'Não encontrado.' });
+    return res.status(200).json({ mensagem: 'Ingresso excluído com sucesso.' });
+})
+
 // MÉTODOS PARA A TABELA INGRESSO
 
 const getAllIngresso = async () => {
