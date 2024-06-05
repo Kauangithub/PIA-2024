@@ -38,10 +38,10 @@ app.get('/Cadastro_ingresso', async (req,res) => {
 })
   
 
-app.get('/Cadastro_ingresso/:id', async (req,res)=>{
-    const {id} = req.params;
+app.get('/Cadastro_ingresso/:nome', async (req,res)=>{
+    const {nome} = req.params;
     const [query] = await connection.execute
-    ('select * from pia_2024.Cadastro_ingresso where id = ?', [id]);
+    ('select * from pia_2024.Cadastro_ingresso where nome = ?', [nome]);
     if(query.length === 0) return res.status(400).json({mensagem: 'Nao encontrado. '});
     return res.status(200).json(query);
 })

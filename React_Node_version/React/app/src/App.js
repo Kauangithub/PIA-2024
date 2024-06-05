@@ -127,54 +127,7 @@ const Admin = () => {
 const Ingresso = () => {
   return (
     <>
-      <div class="container">
-        <div class="conteudo center">
-            <h1>Passeio guiado</h1>
-            <div class="horizontal content">
-                <div class="conteudo w50">
-                    <p>
-                        Frase de exemplo pra descrição- Explore a natureza em sua forma mais vibrante! Traga sua turma escolar para uma jornada emocionante de aprendizado e diversão em nosso parque de conservação. Reserve seus ingressos agora e desperte o espírito da aventura!
-                    </p>
-                    <p>alguma informação importante</p>
-                    <p>campo aberto para informações ou cuidados ao ir para o parque....</p>
-                    <p>Para mais informações, entre em contato com email@gmail.com</p>
-                </div>
-                <div class="w50"><img src="https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg" /></div>
-            </div>
-
-            <form class="form-container">
-                <h4 class="center">Garanta já seu ingresso</h4>
-                <div class="horizontal" id="pagamento">
-                    <div class="w50 gap">
-                        <div>
-                            <label for="name">Nome do professor/ responsável pelos alunos:</label>
-                            <input type="text" id="name" name="name" required placeholder="Digite aqui" />
-                        </div>
-                        <div>
-                            <label for="email">E-mail:</label>
-                            <input type="email" id="email" name="email" required placeholder="Digite aqui" />
-                        </div>
-                        <div>
-                            <label for="quantity">Quantidade de Ingressos:</label>
-                            <input type="number" id="quantity" name="quantity" value="1" min="1" />
-                        </div>
-                        <div class="horizontal">
-                            <button type="button" id="decrease">-</button>
-                            <button type="button" id="increase">+</button>
-                        </div>
-                    </div>
-                    <div class="w50 gap">
-                        <div>
-                            <label for="value"><b>VALOR TOTAL R$ <span id="display-value">0</span>.00</b></label>
-                            <input type="text" id="name" name="name" required placeholder="Cupom/ Voucher:" />
-                        </div>
-                        <button type="submit">Continuar</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <br></br>
+    <ExibirIngresso_pagina></ExibirIngresso_pagina>
     </>
   )
 }
@@ -284,7 +237,7 @@ const ExibirIngresso_card = () => {
               //<h3>{cadastro_ingresso.nome}</h3>
          // </div>
 
-      <a key={index} href=''>
+      <a key={index} href={cadastro_ingresso.nome}>
       <div class="card-trilha">
         <img src=''/>
         <div class="card-container">
@@ -329,6 +282,80 @@ const ExibirIngresso_lista = () => {
           ))}
         </tbody>
       </table>
+  )
+}
+
+const ExibirIngresso_pagina = () => {
+  var nome = window.location.href
+  var parteCortada = nome.replace(/^(?:\/\/|[^\/]+)*\//, '');
+  var endereco = "http://localhost:3333/Cadastro_ingresso/" + parteCortada
+
+  const [cadastro_ingresso, setData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const resposta = await axios.get(endereco);
+      setData(resposta.data);
+    };
+    fetchData();
+  }, []);
+
+  return(
+    <div>
+      <div class="container">
+        <div class="conteudo center">
+          {cadastro_ingresso.map((cadastro_ingresso, index) => (
+            <div key={index}>
+            <h1>{cadastro_ingresso.nome}</h1>
+            <br />
+            <div class="horizontal content">
+                <div class="conteudo w50">
+                    <p>
+                      {cadastro_ingresso.descricao}
+                    </p>
+                </div>
+                <div class="imagem">
+                  <img src="https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg" />
+                </div>
+            </div>
+
+            <br></br>
+
+            <form class="form-container">
+                <h4 class="center">Garanta já seu ingresso</h4>
+                <div class="horizontal" id="pagamento">
+                    <div class="w50 gap">
+                        <div>
+                            <label for="name">Nome do professor/ responsável pelos alunos:</label>
+                            <input type="text" id="name" name="name" required placeholder="Digite aqui" />
+                        </div>
+                        <div>
+                            <label for="email">E-mail:</label>
+                            <input type="email" id="email" name="email" required placeholder="Digite aqui" />
+                        </div>
+                        <div>
+                            <label for="quantity">Quantidade de Ingressos:</label>
+                            <input type="number" id="quantity" name="quantity" value="1" min="1" />
+                        </div>
+                        <div class="horizontal">
+                            <button type="button" id="decrease">-</button>
+                            <button type="button" id="increase">+</button>
+                        </div>
+                    </div>
+                    <div class="w50 gap">
+                        <div>
+                            <label for="value"><b>VALOR TOTAL R$ <span id="display-value">0</span>.00</b></label>
+                            <input type="text" id="name" name="name" required placeholder="Cupom/ Voucher:" />
+                        </div>
+                        <button type="submit">Continuar</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+          ))}
+        </div>
+    </div>
+    <br></br>
+    </div>
   )
 }
 
