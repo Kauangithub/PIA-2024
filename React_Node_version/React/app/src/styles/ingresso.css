@@ -3,17 +3,6 @@ body{
     height: auto;
 }
 
-.imagem{
-    display: flex;
-    justify-content: right;
-}
-
-.imagem img{
-    width: 1000px;
-    height: auto;
-    position: relative;
-}
-
 
 #inicio{
     align-content: center;

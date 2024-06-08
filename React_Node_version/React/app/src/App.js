@@ -286,7 +286,12 @@ const ExibirIngresso_lista = () => {
 }
 
 const ExibirIngresso_pagina = () => {
+  
+  // capturar a url da página atual
   var nome = window.location.href
+  
+  // deletar a parte desnecessária da url para capturar o nome em específico para a página escolhida
+  // exemplo: http://localhost:3000/AAAA, onde /^(?:\/\/|[^\/]+)*\// irá cortar o http://localhost:3000/
   var parteCortada = nome.replace(/^(?:\/\/|[^\/]+)*\//, '');
   var endereco = "http://localhost:3333/Cadastro_ingresso/" + parteCortada
 
@@ -313,13 +318,11 @@ const ExibirIngresso_pagina = () => {
                       {cadastro_ingresso.descricao}
                     </p>
                 </div>
-                <div class="imagem">
-                  <img src="https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg" />
-                </div>
+                <div class="w50">
+                    <img src='https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg' />
+                  </div>
             </div>
-
             <br></br>
-
             <form class="form-container">
                 <h4 class="center">Garanta já seu ingresso</h4>
                 <div class="horizontal" id="pagamento">
