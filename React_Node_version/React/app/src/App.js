@@ -118,6 +118,8 @@ const Home = () => {
 const Admin = () => {
   return (
     <>
+    <h1>Ingressos existentes:</h1>
+    <br></br>
     <ExibirIngresso_lista></ExibirIngresso_lista>
     <CadastrarIngresso></CadastrarIngresso>
     </>
@@ -162,10 +164,6 @@ const CadastrarIngresso = () => {
     <div>
       <div>
         <div>
-          <div>
-            <h1>Ingressos existentes:</h1>
-
-          </div>
           <div>
             <h1>Dados do ingresso</h1>
           </div>
@@ -278,6 +276,11 @@ const ExibirIngresso_lista = () => {
               <td style={{ padding: '8px' }}>{cadastro_ingresso.nome}</td>
               <td style={{ padding: '8px' }}>{cadastro_ingresso.descricao}</td>
               <td style={{ padding: '8px' }}>{cadastro_ingresso.preco}</td>
+              <td style={{ padding: '8px' }}>
+                <button>
+                  <a href=''>Editar</a>
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
