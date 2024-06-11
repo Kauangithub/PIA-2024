@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Outlet, Link } from "react-router-dom";
 
-
 // Importar css
 import './styles/base.css'
 import './styles/pagina.css'
@@ -237,8 +236,8 @@ const ExibirIngresso_card = () => {
 
       <a key={index} href={cadastro_ingresso.nome}>
       <div class="card-trilha">
-        <img src=''/>
         <div class="card-container">
+          <img></img>
           <h4>{cadastro_ingresso.nome}</h4>
           <p>A partir de R$ {cadastro_ingresso.preco}</p>
         </div>
@@ -276,11 +275,6 @@ const ExibirIngresso_lista = () => {
               <td style={{ padding: '8px' }}>{cadastro_ingresso.nome}</td>
               <td style={{ padding: '8px' }}>{cadastro_ingresso.descricao}</td>
               <td style={{ padding: '8px' }}>{cadastro_ingresso.preco}</td>
-              <td style={{ padding: '8px' }}>
-                <button>
-                  <a href=''>Editar</a>
-                </button>
-              </td>
             </tr>
           ))}
         </tbody>
@@ -322,7 +316,7 @@ const ExibirIngresso_pagina = () => {
                     </p>
                 </div>
                 <div class="w50">
-                    <img src='https://png.pngtree.com/png-vector/20190820/ourmid/pngtree-no-image-vector-illustration-isolated-png-image_1694547.jpg' />
+                  <img></img>
                   </div>
             </div>
             <br></br>

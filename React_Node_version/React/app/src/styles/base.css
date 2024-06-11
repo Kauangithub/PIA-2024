@@ -142,7 +142,7 @@ a {
 .cards a {
     width: 100%;
     flex-wrap: wrap;
-    flex: 1 1 240px;
+    flex: 1 1 300px;
 }
 
 .card-trilha {

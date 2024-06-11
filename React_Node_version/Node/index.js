@@ -14,11 +14,11 @@ app.listen(PORT, () =>
 
 const mysql = require('mysql2/promise');
 const connection = mysql.createPool({
-    host: 'auth-db572.hstgr.io',
+    host: 'localhost',
     port: 3306,
-    user: 'u368457673_bordeus',
-    password: 'Ifsp100%',
-    database: 'u368457673_bordeus'
+    user: 'root',
+    password: 'aluno',
+    database: 'pia_2024'
 });
 
 app.get('/', (req, res) => {
@@ -46,6 +46,25 @@ app.get('/Cadastro_ingresso/:nome', async (req,res)=>{
     if(query.length === 0) return res.status(400).json({mensagem: 'Nao encontrado. '});
     return res.status(200).json(query);
 })
+
+app.get('/Cadastro_ingresso/img/:nome', async (req, res) => {
+    const { nome } = req.params;
+    const [query] = await connection.execute(
+        'SELECT img FROM Cadastro_ingresso WHERE nome = ?',
+        [nome]
+    );
+
+    if (query.length === 0) {
+        return res.status(404).json({ mensagem: 'Não encontrado.' }); // 404 para "Not Found"
+    }
+
+    const imgBlob = query[0].img;
+    const buffer = Buffer.from(imgBlob, 'binary');
+    const base64Image = buffer.toString('base64');
+    const imageUrl = `data:image/png;base64,${base64Image}`;
+
+    return res.status(200).send(imageUrl);
+});
 
 app.post('/Cadastro_ingresso', async (req,res)=>{
     const {ticketName, ticketDescription, ticketPrice, ticketImage} = req.body;
