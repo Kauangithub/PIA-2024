@@ -50,8 +50,7 @@ app.get('/Cadastro_ingresso/:nome', async (req,res)=>{
 app.get('/Cadastro_ingresso/img/:nome', async (req, res) => {
     const { nome } = req.params;
     const [query] = await connection.execute(
-        'SELECT img FROM Cadastro_ingresso WHERE nome = ?',
-        [nome]
+        'SELECT img FROM Cadastro_ingresso WHERE nome = ?', [nome]
     );
 
     if (query.length === 0) {

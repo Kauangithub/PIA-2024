@@ -40,6 +40,9 @@ function App() {
             <Route key={index} path={cadastro_ingresso.nome} element={<Ingresso/>} />
           ))}
         </Route>
+        <Route path='/edit' element={<Layout />}>
+          <Route index element={<Home />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   )
@@ -120,6 +123,7 @@ const Admin = () => {
     <h1>Ingressos existentes:</h1>
     <br></br>
     <ExibirIngresso_lista></ExibirIngresso_lista>
+    <br></br>
     <CadastrarIngresso></CadastrarIngresso>
     </>
   )
@@ -129,6 +133,14 @@ const Ingresso = () => {
   return (
     <>
     <ExibirIngresso_pagina></ExibirIngresso_pagina>
+    </>
+  )
+}
+
+const Editar = () => {
+  return(
+    <>
+    <h1>OOOOOOO</h1>
     </>
   )
 }
@@ -237,7 +249,7 @@ const ExibirIngresso_card = () => {
       <a key={index} href={cadastro_ingresso.nome}>
       <div class="card-trilha">
         <div class="card-container">
-          <img></img>
+          <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkK98VBjmf1Q6_3SC9Nmz8CILkBdm1BUiFLg&s'></img>
           <h4>{cadastro_ingresso.nome}</h4>
           <p>A partir de R$ {cadastro_ingresso.preco}</p>
         </div>
@@ -275,6 +287,12 @@ const ExibirIngresso_lista = () => {
               <td style={{ padding: '8px' }}>{cadastro_ingresso.nome}</td>
               <td style={{ padding: '8px' }}>{cadastro_ingresso.descricao}</td>
               <td style={{ padding: '8px' }}>{cadastro_ingresso.preco}</td>
+              <td style={{ padding: '8px' }}>
+              <a href=''><button>Editar</button></a>
+              </td>
+              <td style={{ padding: '8px' }}>
+              <a href=''><button>Deletar</button></a>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -309,14 +327,14 @@ const ExibirIngresso_pagina = () => {
             <div key={index}>
             <h1>{cadastro_ingresso.nome}</h1>
             <br />
-            <div class="horizontal content">
+            <div class="horizontal content" style={{ width: '50vw'}}>
                 <div class="conteudo w50">
                     <p>
                       {cadastro_ingresso.descricao}
                     </p>
                 </div>
                 <div class="w50">
-                  <img></img>
+                  <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkK98VBjmf1Q6_3SC9Nmz8CILkBdm1BUiFLg&s'></img>
                   </div>
             </div>
             <br></br>
