@@ -41,7 +41,7 @@ function App() {
           ))}
         </Route>
         <Route path='/edit' element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<Editar />} />
         </Route>
       </Routes>
     </BrowserRouter>
@@ -140,7 +140,7 @@ const Ingresso = () => {
 const Editar = () => {
   return(
     <>
-    <h1>OOOOOOO</h1>
+      <Edit></Edit>
     </>
   )
 }
@@ -249,7 +249,7 @@ const ExibirIngresso_card = () => {
       <a key={index} href={cadastro_ingresso.nome}>
       <div class="card-trilha">
         <div class="card-container">
-          <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkK98VBjmf1Q6_3SC9Nmz8CILkBdm1BUiFLg&s'></img>
+          <Image />
           <h4>{cadastro_ingresso.nome}</h4>
           <p>A partir de R$ {cadastro_ingresso.preco}</p>
         </div>
@@ -259,6 +259,38 @@ const ExibirIngresso_card = () => {
     </div>
   )
 }
+
+const Image = () => {
+  const [imageUrl, setImageUrl] = useState('');
+
+  useEffect(() => {
+      const fetchData = async () => {
+          try {
+              const resposta = await axios.get('http://localhost:3333/Cadastro_ingresso/img/Teste', {
+                  responseType: 'arraybuffer'  // Indica que a resposta é um array de bytes (Blob)
+              });
+
+              const blob = new Blob([resposta.data], { type: 'image/png' }); // ou 'image/png', dependendo do tipo de imagem
+              const url = URL.createObjectURL(blob);
+              setImageUrl(url);
+          } catch (error) {
+              console.error('Erro ao carregar imagem:', error);
+          }
+      };
+
+      fetchData();
+  }, []);
+
+  return (
+      <div>
+          {imageUrl ? (
+              <img src={imageUrl} alt="Imagem do Banco de Dados" style={{ maxWidth: '100%' }} />
+          ) : (
+              <p>Carregando...</p>
+          )}
+      </div>
+  );
+};
 
 const ExibirIngresso_lista = () => {
   const [cadastro_ingresso, setData] = useState([]);
@@ -334,7 +366,7 @@ const ExibirIngresso_pagina = () => {
                     </p>
                 </div>
                 <div class="w50">
-                  <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkK98VBjmf1Q6_3SC9Nmz8CILkBdm1BUiFLg&s'></img>
+                  <Image></Image>
                   </div>
             </div>
             <br></br>
@@ -376,5 +408,7 @@ const ExibirIngresso_pagina = () => {
     </div>
   )
 }
+
+const Edit
 
 export default App;

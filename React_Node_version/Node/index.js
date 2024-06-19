@@ -1,6 +1,5 @@
 const express=require('express');
 const cors=require('cors');
-const blobUtil = require('blob-util');
 
 const app = express();
 app.use(express.urlencoded({ extend: true}));
@@ -57,12 +56,7 @@ app.get('/Cadastro_ingresso/img/:nome', async (req, res) => {
         return res.status(404).json({ mensagem: 'Não encontrado.' }); // 404 para "Not Found"
     }
 
-    const imgBlob = query[0].img;
-    const buffer = Buffer.from(imgBlob, 'binary');
-    const base64Image = buffer.toString('base64');
-    const imageUrl = `data:image/png;base64,${base64Image}`;
-
-    return res.status(200).send(imageUrl);
+    return res.status(200).json(query);
 });
 
 app.post('/Cadastro_ingresso', async (req,res)=>{
