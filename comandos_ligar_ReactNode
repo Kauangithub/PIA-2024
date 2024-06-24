@@ -9,5 +9,5 @@ npm start
 Node:
 cd React_Node_version
 cd Node
-npm install express
+npm install express cors
 node index.js
