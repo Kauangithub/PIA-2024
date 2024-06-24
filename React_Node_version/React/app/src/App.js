@@ -18,7 +18,6 @@ import facebook from './img/facebook.png'
 import flickr from './img/flickr.png'
 import youtube from './img/youtube.png'
 
-
 // Rotas e links
 function App() {
   const [cadastro_ingresso, setData] = useState([]);
@@ -36,12 +35,11 @@ function App() {
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
           <Route path='admin' element={<Admin />} />
+          <Route path='edit' element={<Editar />} />
+          <Route path='delete' element={<Deletar />} />
           {cadastro_ingresso.map((cadastro_ingresso, index) => (
             <Route key={index} path={cadastro_ingresso.nome} element={<Ingresso/>} />
           ))}
-        </Route>
-        <Route path='/edit' element={<Layout />}>
-          <Route index element={<Editar />} />
         </Route>
       </Routes>
     </BrowserRouter>
@@ -140,7 +138,15 @@ const Ingresso = () => {
 const Editar = () => {
   return(
     <>
-      <Edit></Edit>
+    <EditarIngresso></EditarIngresso>
+    </>
+  )
+}
+
+const Deletar = () => {
+  return(
+    <>
+      <DeletarIngresso></DeletarIngresso>
     </>
   )
 }
@@ -227,6 +233,125 @@ const CadastrarIngresso = () => {
   )
 }
 
+const EditarIngresso = () => {
+  const [ticketName, setTicketName] = useState('');
+  const [ticketDescription, setTicketDescription] = useState('');
+  const [ticketPrice, setTicketPrice] = useState('');
+  const [ticketId, setTicketId] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+ 
+    try {
+      // Envia os dados para a rota usando o método POST
+      await axios.put('http://localhost:3333/Cadastro_ingresso/edit', { ticketName, ticketDescription, ticketPrice, ticketId });
+      alert('Dados enviados com sucesso!');
+      // Limpa os campos após o envio bem-sucedido
+      setTicketName('');
+      setTicketDescription('');
+      setTicketPrice('');
+      setTicketId('');
+ 
+    } catch (error) {
+      console.error('Erro ao enviar dados:', error);
+      alert('Erro ao enviar dados. Consulte o console para mais detalhes.');
+    }
+  };
+
+  return(
+    <div>
+      <div>
+        <div>
+          <div>
+            <h1>Edite o ingresso</h1>
+          </div>
+          <br />
+          <div class="center">
+            <form onSubmit={handleSubmit}>
+              <div>
+                <label>Nome do ingresso:</label>
+                <input
+                  type="text"
+                  value={ticketName}
+                  onChange={(e) => setTicketName(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label>Descrição:</label>
+                <input
+                  type="text"
+                  value={ticketDescription}
+                  onChange={(e) => setTicketDescription(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label>Preço:</label>
+                <input
+                  type="number"
+                  value={ticketPrice}
+                  onChange={(e) => setTicketPrice(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label>Id:</label>
+                <input
+                  type="number"
+                  value={ticketId}
+                  onChange={(e) => setTicketId(e.target.value)}
+                  required
+                />
+              </div>
+              <input type="submit"/>
+            </form>
+          </div>
+          <br />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const DeletarIngresso = () => {
+  const [ticketId, setTicketId] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      var caminho = 'http://localhost:3333/Cadastro_ingresso/' + ticketId
+      // Envia a requisição DELETE para a rota
+      await axios.delete(caminho);
+      alert('Ingresso deletado com sucesso!');
+      // Limpa o campo após o envio bem-sucedido
+      setTicketId('');
+    } catch (error) {
+      console.error('Erro ao deletar ingresso:', error);
+      alert('Erro ao deletar ingresso. Consulte o console para mais detalhes.');
+    }
+  };
+
+  return (
+    <div>
+      <h1>Deletar Ingresso</h1>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Informe o ID do ingresso a ser deletado:</label>
+          <input
+            type="number"
+            value={ticketId}
+            onChange={(e) => setTicketId(e.target.value)}
+            required
+          />
+        </div>
+        <input type="submit" value="Deletar Ingresso" />
+      </form>
+    </div>
+  );
+};
+
 const ExibirIngresso_card = () => {
   const [cadastro_ingresso, setData] = useState([]);
   useEffect(() => {
@@ -266,7 +391,7 @@ const Image = () => {
   useEffect(() => {
       const fetchData = async () => {
           try {
-              const resposta = await axios.get('http://localhost:3333/Cadastro_ingresso/img/Teste', {
+              const resposta = await axios.get('http://localhost:3333/Cadastro_ingresso/img/AAAA', {
                   responseType: 'arraybuffer'  // Indica que a resposta é um array de bytes (Blob)
               });
 
@@ -303,7 +428,8 @@ const ExibirIngresso_lista = () => {
   }, []);
 
   return(
-    <table style={{ borderCollapse: 'collapse', width: '100%', color: 'white' }}>
+    <div>
+      <table style={{ borderCollapse: 'collapse', width: '100%', color: 'white' }}>
         <thead>
           <tr style={{ borderBottom: '1px solid #ddd' }}>
           <th style={{ padding: '8px', textAlign: 'left' }}>ID</th>
@@ -319,16 +445,19 @@ const ExibirIngresso_lista = () => {
               <td style={{ padding: '8px' }}>{cadastro_ingresso.nome}</td>
               <td style={{ padding: '8px' }}>{cadastro_ingresso.descricao}</td>
               <td style={{ padding: '8px' }}>{cadastro_ingresso.preco}</td>
-              <td style={{ padding: '8px' }}>
-              <a href=''><button>Editar</button></a>
-              </td>
-              <td style={{ padding: '8px' }}>
-              <a href=''><button>Deletar</button></a>
-              </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <br></br>
+      <br></br>
+      <div class="center">
+        <div class="horizontal">
+          <a href="edit" class="botao">Editar</a>
+          <a href="delete" class="botao">Deletar</a>
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -408,7 +537,5 @@ const ExibirIngresso_pagina = () => {
     </div>
   )
 }
-
-const Edit
 
 export default App;

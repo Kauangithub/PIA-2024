@@ -16,7 +16,7 @@ const connection = mysql.createPool({
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: 'aluno',
+    password: '',
     database: 'pia_2024'
 });
 
@@ -66,12 +66,35 @@ app.post('/Cadastro_ingresso', async (req,res)=>{
     return res.status(200).json({ mensagem: 'Inserido com sucesso.' });
 })
 
-app.delete('/Cadastro_ingresso/:id', async (req,res)=>{
+app.put('/Cadastro_ingresso/edit', async (req, res) => {
+    const { ticketName, ticketDescription, ticketPrice, ticketId } = req.body;
+    try {
+        const [query] = await connection.execute(
+            'UPDATE cadastro_ingresso SET nome = ?, descricao = ?, preco = ? WHERE id = ?',
+            [ticketName, ticketDescription, ticketPrice, ticketId]
+        );
+        if (query.affectedRows === 0) {
+            return res.status(404).json({ mensagem: 'Não encontrado.' });
+        }
+        return res.status(200).json({ mensagem: 'Ingresso editado com sucesso.' });
+    } catch (error) {
+        return res.status(500).json({ mensagem: 'Erro ao atualizar ingresso.', error: error.message });
+    }
+});
+
+
+app.delete('/Cadastro_ingresso/:id', async (req, res) => {
     const { id } = req.params;
-    const [query] = await connection.execute('delete from Cadastro_ingresso where id = ?', [id]);
-    if (query.affectedRows === 0) return res.status(404).json({ mensagem: 'Não encontrado.' });
-    return res.status(200).json({ mensagem: 'Ingresso excluído com sucesso.' });
-})
+    try {
+        const [query] = await connection.execute('DELETE FROM Cadastro_ingresso WHERE id = ?', [id]);
+        if (query.affectedRows === 0) {
+            return res.status(404).json({ mensagem: 'Ingresso não encontrado.' });
+        }
+        return res.status(200).json({ mensagem: 'Ingresso deletado com sucesso.' });
+    } catch (error) {
+        return res.status(500).json({ mensagem: 'Erro ao deletar ingresso.', error: error.message });
+    }
+});
 
 // MÉTODOS PARA A TABELA INGRESSO
 
