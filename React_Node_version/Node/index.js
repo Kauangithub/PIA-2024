@@ -16,7 +16,7 @@ const connection = mysql.createPool({
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: '',
+    password: 'aluno',
     database: 'pia_2024'
 });
 
@@ -67,11 +67,11 @@ app.post('/Cadastro_ingresso', async (req,res)=>{
 })
 
 app.put('/Cadastro_ingresso/edit', async (req, res) => {
-    const { ticketName, ticketDescription, ticketPrice, ticketId } = req.body;
+    const {ticketName, ticketDescription, ticketPrice, ticketImage, ticketId} = req.body;
     try {
         const [query] = await connection.execute(
-            'UPDATE cadastro_ingresso SET nome = ?, descricao = ?, preco = ? WHERE id = ?',
-            [ticketName, ticketDescription, ticketPrice, ticketId]
+            'UPDATE cadastro_ingresso SET nome = ?, descricao = ?, preco = ?, img = ? WHERE id = ?',
+            [ticketName, ticketDescription, ticketPrice, ticketImage, ticketId]
         );
         if (query.affectedRows === 0) {
             return res.status(404).json({ mensagem: 'Não encontrado.' });

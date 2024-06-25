@@ -3,7 +3,7 @@ React:
 cd React_Node_version
 cd React
 cd app
-npm install axios react react-dom react-router-dom
+npm install axios react react-router-dom
 npm start
 
 Node:
