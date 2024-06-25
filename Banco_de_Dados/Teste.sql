@@ -51,6 +51,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 INSERT INTO Cadastro_ingresso (nome, descricao, preco, img) VALUES ('Teste01', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', '10', 'Teste01.jpg');
 INSERT INTO Cadastro_ingresso (nome, descricao, preco, img) VALUES ('Teste02', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', '20', 'Teste02.jpg');
+INSERT INTO Cadastro_ingresso (nome, descricao, preco, img) VALUES ('Teste03', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', '100', 'Teste03.jpg');
+INSERT INTO Cadastro_ingresso (nome, descricao, preco, img) VALUES ('Teste04', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', '50', 'Teste04.jpg');
 
 
 
