@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS Pia_2024.Cadastro_ingresso (
   nome VARCHAR(45) NOT NULL,
   descricao LONGTEXT NOT NULL,
   preco DECIMAL(4,2) NOT NULL,
-  img LONGBLOB NOT NULL,
+  img LONGTEXT NOT NULL,
   PRIMARY KEY (id))
 ENGINE = InnoDB;
 
@@ -48,3 +48,9 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+INSERT INTO Cadastro_ingresso (nome, descricao, preco, img) VALUES ('Teste01', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', '10', 'Teste01.jpg');
+INSERT INTO Cadastro_ingresso (nome, descricao, preco, img) VALUES ('Teste02', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry', '20', 'Teste02.jpg');
+
+
+

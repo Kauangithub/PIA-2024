@@ -217,8 +217,9 @@ const CadastrarIngresso = () => {
               <div>
                 <label>Imagem</label>
                 <input
-                  type="file"
+                  type="text"
                   value={ticketImage}
+                  placeholder='Coloque o nome do arquivo da imagem, exemplo: Teste01.jpg (obs: Ela deve estar na pasta React/app/public/img)'
                   onChange={(e) => setTicketImage(e.target.value)}
                   required
                 />
@@ -237,6 +238,7 @@ const EditarIngresso = () => {
   const [ticketName, setTicketName] = useState('');
   const [ticketDescription, setTicketDescription] = useState('');
   const [ticketPrice, setTicketPrice] = useState('');
+  const [ticketImage, setTicketImage] = useState('');
   const [ticketId, setTicketId] = useState('');
 
   const handleSubmit = async (e) => {
@@ -244,12 +246,13 @@ const EditarIngresso = () => {
  
     try {
       // Envia os dados para a rota usando o método POST
-      await axios.put('http://localhost:3333/Cadastro_ingresso/edit', { ticketName, ticketDescription, ticketPrice, ticketId });
+      await axios.put('http://localhost:3333/Cadastro_ingresso/edit', { ticketName, ticketDescription, ticketPrice, ticketImage, ticketId });
       alert('Dados enviados com sucesso!');
       // Limpa os campos após o envio bem-sucedido
       setTicketName('');
       setTicketDescription('');
       setTicketPrice('');
+      setTicketImage('');
       setTicketId('');
  
     } catch (error) {
@@ -263,11 +266,20 @@ const EditarIngresso = () => {
       <div>
         <div>
           <div>
-            <h1>Edite o ingresso</h1>
+            <h1>Editar ingresso</h1>
           </div>
           <br />
           <div class="center">
             <form onSubmit={handleSubmit}>
+            <div>
+                <label>Informe o ID do ingresso a ser editado:</label>
+                <input
+                  type="number"
+                  value={ticketId}
+                  onChange={(e) => setTicketId(e.target.value)}
+                  required
+                />
+              </div>
               <div>
                 <label>Nome do ingresso:</label>
                 <input
@@ -296,11 +308,12 @@ const EditarIngresso = () => {
                 />
               </div>
               <div>
-                <label>Id:</label>
+                <label>Imagem:</label>
                 <input
-                  type="number"
-                  value={ticketId}
-                  onChange={(e) => setTicketId(e.target.value)}
+                  type="text"
+                  value={ticketImage}
+                  placeholder='Coloque o nome do arquivo da imagem, exemplo: Teste01.jpg (obs: Ela deve estar na pasta React/app/public/img)'
+                  onChange={(e) => setTicketImage(e.target.value)}
                   required
                 />
               </div>
@@ -365,16 +378,11 @@ const ExibirIngresso_card = () => {
   return(
     <div class="cards">
       {cadastro_ingresso.map((cadastro_ingresso, index) => (
-          //<div key={index} class="ticket-option">
-            //  <ImageComponent></ImageComponent>
-              //<p>A partir de R${cadastro_ingresso.preco}</p>
-              //<h3>{cadastro_ingresso.nome}</h3>
-         // </div>
 
       <a key={index} href={cadastro_ingresso.nome}>
       <div class="card-trilha">
         <div class="card-container">
-          <Image />
+          <img src={process.env.PUBLIC_URL + './img/' + cadastro_ingresso.img} alt="Imagem do Banco de Dados" style={{ maxWidth: '100%' }} />
           <h4>{cadastro_ingresso.nome}</h4>
           <p>A partir de R$ {cadastro_ingresso.preco}</p>
         </div>
@@ -384,38 +392,6 @@ const ExibirIngresso_card = () => {
     </div>
   )
 }
-
-const Image = () => {
-  const [imageUrl, setImageUrl] = useState('');
-
-  useEffect(() => {
-      const fetchData = async () => {
-          try {
-              const resposta = await axios.get('http://localhost:3333/Cadastro_ingresso/img/AAAA', {
-                  responseType: 'arraybuffer'  // Indica que a resposta é um array de bytes (Blob)
-              });
-
-              const blob = new Blob([resposta.data], { type: 'image/png' }); // ou 'image/png', dependendo do tipo de imagem
-              const url = URL.createObjectURL(blob);
-              setImageUrl(url);
-          } catch (error) {
-              console.error('Erro ao carregar imagem:', error);
-          }
-      };
-
-      fetchData();
-  }, []);
-
-  return (
-      <div>
-          {imageUrl ? (
-              <img src={imageUrl} alt="Imagem do Banco de Dados" style={{ maxWidth: '100%' }} />
-          ) : (
-              <p>Carregando...</p>
-          )}
-      </div>
-  );
-};
 
 const ExibirIngresso_lista = () => {
   const [cadastro_ingresso, setData] = useState([]);
@@ -495,7 +471,7 @@ const ExibirIngresso_pagina = () => {
                     </p>
                 </div>
                 <div class="w50">
-                  <Image></Image>
+                    <img src={process.env.PUBLIC_URL + './img/' + cadastro_ingresso.img} alt="Imagem do Banco de Dados" style={{ maxWidth: '100%' }} />
                   </div>
             </div>
             <br></br>
