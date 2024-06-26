@@ -186,7 +186,7 @@ const CadastrarIngresso = () => {
           </div>
           <br />
           <div class="center">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} >
               <div>
                 <label>Nome do ingresso:</label>
                 <input
@@ -356,6 +356,7 @@ const DeletarIngresso = () => {
   return (
     <div>
       <h1>Deletar Ingresso</h1>
+      <br></br>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Informe o ID do ingresso a ser deletado:</label>
@@ -425,7 +426,7 @@ const ExibirIngresso_lista = () => {
           {cadastro_ingresso.map((cadastro_ingresso, index) => (
             <tr key={index} style={{ borderBottom: '1px solid #ddd' }}>
               <td style={{ padding: '8px' }}>{cadastro_ingresso.id}</td>
-              <td style={{ padding: '8px' }}>{cadastro_ingresso.nome}</td>
+              <td style={{ padding: '8px' }}><a href={cadastro_ingresso.nome}>{cadastro_ingresso.nome}</a></td>
               <td style={{ padding: '8px' }}>{cadastro_ingresso.descricao}</td>
               <td style={{ padding: '8px' }}>{cadastro_ingresso.preco}</td>
             </tr>
