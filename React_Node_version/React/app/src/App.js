@@ -503,6 +503,19 @@ const FormCompraIngresso = () => {
     setQuantity(quantity + 1);
   };
 
+  var nome = window.location.href
+  var parteCortada = nome.replace(/^(?:\/\/|[^\/]+)*\//, '');
+  var endereco = "http://localhost:3333/Cadastro_ingresso/" + parteCortada
+
+  const [cadastro_ingresso, setData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const resposta = await axios.get(endereco);
+      setData(resposta.data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <div>
       <form className="form-container">
@@ -518,17 +531,7 @@ const FormCompraIngresso = () => {
               <input type="email" id="email" name="email" required placeholder="Digite aqui"/>
             </div>
             <div>
-              <label htmlFor="quantity">Quantidade de Ingressos:</label>
-              <input 
-                type="number" 
-                id="quantity" 
-                name="quantity" 
-                min="1" 
-                required 
-                value={quantity} // Valor do input controlado pelo estado quantity
-                onChange={(e) => setQuantity(parseInt(e.target.value) || 1)} // Garante que só números válidos são aceitos
-                placeholder='Adicione aqui' 
-              />
+              <label>Quantidade de Ingressos: <span id="quantity">{quantity}</span> </label>
             </div>
             <div className="horizontal">
               <button type="button" id="decrease" onClick={decreaseQuantity}>-</button>
@@ -537,8 +540,9 @@ const FormCompraIngresso = () => {
           </div>
           <div className="w50 gap">
             <div>
-              <label htmlFor="value"><b>VALOR TOTAL R$ <span id="display-value">0</span>.00</b></label>
-              <input type="text" id="name" name="name" required placeholder="Cupom/ Voucher:" />
+              {cadastro_ingresso.map((cadastro_ingresso, index) => (
+                <label htmlFor="value"><b>VALOR TOTAL R$ <span id="display-value">{cadastro_ingresso.preco * quantity}</span></b></label>
+              ))}
             </div>
             <button type="submit">Continuar</button>
           </div>
